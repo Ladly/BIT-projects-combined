@@ -1,0 +1,4 @@
+export const FETCH_SHOWS = "homepage/FETCH_SHOWS"
+export const FETCH_SHOWS_PENDING = 'homepage/FETCH_SHOWS_PENDING'
+export const FETCH_SHOWS_FULFILLED = 'homepage/FETCH_SHOWS_FULFILLED'
+export const FETCH_SHOWS_REJECTED = 'homepage/FETCH_SHOWS_REJECTED'

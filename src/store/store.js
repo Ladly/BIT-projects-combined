@@ -4,9 +4,10 @@ import promise from 'redux-promise-middleware'
 import { logger } from 'redux-logger'
 import { combineReducers } from 'redux'
 
+import { homepageReducer } from './../app/containers/Homepage/reducer'
 
 const rootReducer = combineReducers({
-	
+	homepageReducer
 })
 export { rootReducer }
 
