@@ -40,9 +40,9 @@ return {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
 return {
-        detailsAndCast: (id) => dispatch(fetchShowDetailsAndCast(id))
+        detailsAndCast: query => dispatch(fetchShowDetailsAndCast(query))
     }
 }
 

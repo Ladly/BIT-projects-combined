@@ -6,10 +6,12 @@ import { combineReducers } from 'redux'
 
 import { homepageReducer } from './../app/containers/Homepage/reducer'
 import { showDetailsReducer } from './../app/containers/ShowDetailsPage/reducer'
+import { searchInputReducer } from './../app/containers/SearchInput/reducer'
 
 const rootReducer = combineReducers({
 	homepageReducer,
-	showDetailsReducer
+	showDetailsReducer,
+	searchInputReducer
 })
 export { rootReducer }
 

@@ -36,6 +36,14 @@ class ShowsService {
             })
             .then(showDetails => createShowDetails(showDetails))
     }
+
+    static searchShows = (query) => {
+        return fetch(`${SHOWS_URL}?q=${query}`)
+            .then(shows => shows.json())
+            .then(shows => createShow(shows))
+    }
+
 }
+
 
 export { ShowsService }
