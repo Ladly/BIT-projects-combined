@@ -5,9 +5,11 @@ import { logger } from 'redux-logger'
 import { combineReducers } from 'redux'
 
 import { homepageReducer } from './../app/containers/Homepage/reducer'
+import { showDetailsReducer } from './../app/containers/ShowDetailsPage/reducer'
 
 const rootReducer = combineReducers({
-	homepageReducer
+	homepageReducer,
+	showDetailsReducer
 })
 export { rootReducer }
 

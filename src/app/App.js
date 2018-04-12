@@ -3,6 +3,7 @@ import { Route, Switch, Link } from "react-router-dom";
 
 import { Navigation } from './components/Navigation'
 import Homepage from './containers/Homepage'
+import ShowDetailsPage from './containers/ShowDetailsPage'
 
 
 export const App = () => {
@@ -10,7 +11,7 @@ export const App = () => {
     return (
         <Fragment>
             <Navigation />
-            <Homepage />
+            <ShowDetailsPage />
         </Fragment>
     )
 }
