@@ -8,7 +8,7 @@ import { SingleShowCard } from './../../components/SingleShowCard'
 class ShowDetailsPage extends Component {
 
     componentDidMount() {
-        this.props.detailsAndCast()
+        this.props.detailsAndCast(this.props.match.params.id)
     }
 
     displayDetails = () => {
@@ -21,7 +21,7 @@ class ShowDetailsPage extends Component {
         }
     }
 
-    render() {
+    render() {        
         return (
             <div className="container">
                 {this.displayDetails()}
@@ -42,7 +42,7 @@ return {
 
 const mapDispatchToProps = (dispatch) => {
 return {
-        detailsAndCast: () => dispatch(fetchShowDetailsAndCast(77))
+        detailsAndCast: (id) => dispatch(fetchShowDetailsAndCast(id))
     }
 }
 

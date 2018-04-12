@@ -1,13 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom' 
 
 export const ShowCard = (props) => {
         const { show } = props
         return (
             <div className="card col-sm-3">
-                <img className="card-img-top" src={show.image} alt="show poster"/>
-                <div className="card-body">
-                    <p className="card-text text-center">{show.name}</p>
-                </div>
+                <Link to={`/details/${show.id}`} >
+                        <img className="card-img-top" src={show.image} alt="show poster"/>
+                        <div className="card-body">
+                            <p className="card-text text-center">{show.name}</p>
+                        </div>
+                </Link>
             </div>
         )
 

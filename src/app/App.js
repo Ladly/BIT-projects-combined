@@ -11,7 +11,10 @@ export const App = () => {
     return (
         <Fragment>
             <Navigation />
-            <ShowDetailsPage />
+            <Switch>
+                <Route exact path="/" component={Homepage}/>
+                <Route exact path="/details/:id" component={ShowDetailsPage}/>
+            </Switch>
         </Fragment>
     )
 }

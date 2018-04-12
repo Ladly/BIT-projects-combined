@@ -18,19 +18,15 @@ export const SingleShowCard = (props) => {
 
     const displayCast = () => {
         return castInstances.map((cast,i) => {
-            console.log(cast)
             return <li key={i}><b>{cast.name}</b> as {cast.character}</li>
         })
     }
 
     return (
         <Fragment>
-
-                <h1 className="text-center page-title">{showDetails.name}</h1>
-
-                <ShowAKA akas={akasInstances}/>
+            <h1 className="text-center page-title">{showDetails.name}</h1>
+            <ShowAKA akas={akasInstances}/>
             <p>{showDetails.summary}</p>
-
             <div className="row">
                 <div className="image-holder col-sm-6">
                     <img className="show-poster" src={showDetails.image} alt="poster"/>
