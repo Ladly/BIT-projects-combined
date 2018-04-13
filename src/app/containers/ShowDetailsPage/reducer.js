@@ -1,14 +1,24 @@
 import { 
     FETCH_SHOW_DETAILS_AND_CAST_PENDING,
     FETCH_SHOW_DETAILS_AND_CAST_FULFILLED,
-    FETCH_SHOW_DETAILS_AND_CAST_REJECTED
+    FETCH_SHOW_DETAILS_AND_CAST_REJECTED,
+
+    FETCH_SHOWS_CREW_PENDING,
+    FETCH_SHOWS_CREW_FULFILLED,
+    FETCH_SHOWS_CREW_REJECTED
 } from './constants'
 
 const initialState = {
     showDetailsAndCast: null,
     fetchedShowDetailsLoading: false,
     fetchedShowDetailsSuccess: false,
-    fetchedShowDetailsError: false
+    fetchedShowDetailsError: false,
+
+    showsCrew: [],
+    fetchedShowsCrewLoading: false,
+    fetchedShowsCrewSuccess: false,
+    fetchedShowsCrewError: false
+
 }
 
 export const showDetailsReducer = (state = initialState, action) => {
@@ -35,6 +45,31 @@ export const showDetailsReducer = (state = initialState, action) => {
                 fetchedShowDetailsError: true
             }
             break;
+
+
+        case FETCH_SHOWS_CREW_PENDING:
+            return {
+                ...state,
+                fetchedShowsCrewLoading: true
+            }
+            break;
+        case FETCH_SHOWS_CREW_FULFILLED:
+            return {
+                ...state,
+                fetchedShowsCrewLoading:false,
+                fetchedShowsCrewSuccess: true,
+                showsCrew: action.payload
+            }            
+            break;
+        case FETCH_SHOWS_CREW_REJECTED:
+            return {
+                ...state,
+                fetchedShowsCrewLoading: false,
+                fetchedShowsCrewSuccess: false,
+                fetchedShowsCrewError: true
+            }
+            break;
+
         default:
             return state
     }

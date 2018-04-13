@@ -5,6 +5,7 @@ import { createShowDetails } from './../utils/helpers'
 import { createAkas } from './../utils/helpers'
 import { createCast } from './../utils/helpers'
 import { createSeasons } from './../utils/helpers'
+import { createCrew } from './../utils/helpers'
 
 class ShowsService {
     static fetchShows = () => {
@@ -43,6 +44,12 @@ class ShowsService {
             .then(shows => createShow(shows))
     }
 
+    static fetchShowsCrew = (id) => {
+        return fetch(`${SHOWS_URL}/${id}/crew`)
+        .then(showsCrew => showsCrew.json())
+        .then(showsCrew => showsCrew.slice(0, 10))
+        .then(showsCrew => createCrew(showsCrew))
+    }
 }
 
 
