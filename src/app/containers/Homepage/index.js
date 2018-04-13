@@ -6,6 +6,8 @@ import './style.scss'
 import { fetchShows } from './actions'
 
 import { ShowCard } from './../../components/ShowCard'
+import { Loading } from './../../components/Loading'
+import { Error } from './../../components/Error'
 
 class Homepage extends Component {
 
@@ -15,13 +17,13 @@ class Homepage extends Component {
 
     displayShows = () => {
         if(this.props.fetchedShowsLoading) {
-            return <h2>Loading</h2>
+            return <Loading />
         } else if (this.props.fetchShowsSuccess) {
             return this.props.shows.map(show => {
                 return <ShowCard show={show} key={show.id}/>
             })
         } else if (this.props.fetchedShowsError) {
-           return <h2>Error</h2>
+           return <Error />
         }      
 
     }

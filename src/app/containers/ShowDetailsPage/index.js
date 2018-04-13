@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { fetchShowDetailsAndCast } from './actions'
 
 import { SingleShowCard } from './../../components/SingleShowCard'
+import { Loading } from './../../components/Loading'
+import { Error } from './../../components/Error'
 
 class ShowDetailsPage extends Component {
 
@@ -13,11 +15,11 @@ class ShowDetailsPage extends Component {
 
     displayDetails = () => {
         if(this.props.showDetailsLoading) {
-            return <h1>Loading</h1>
+            return <Loading />
         } else if(this.props.showDetailsSuccess) {
             return <SingleShowCard showDetails={this.props.showDetails}/>
         } else if (this.props.showDetailsError) {
-            return <h1>Error</h1>
+            return <Error />
         }
     }
 
