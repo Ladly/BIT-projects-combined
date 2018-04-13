@@ -6,6 +6,7 @@ import { createAkas } from './../utils/helpers'
 import { createCast } from './../utils/helpers'
 import { createSeasons } from './../utils/helpers'
 import { createCrew } from './../utils/helpers'
+import { createEpisodes } from './../utils/helpers'
 
 class ShowsService {
     static fetchShows = () => {
@@ -47,8 +48,14 @@ class ShowsService {
     static fetchShowsCrew = (id) => {
         return fetch(`${SHOWS_URL}/${id}/crew`)
         .then(showsCrew => showsCrew.json())
-        .then(showsCrew => showsCrew.slice(0, 10))
+        // .then(showsCrew => showsCrew.slice(0, 10))
         .then(showsCrew => createCrew(showsCrew))
+    }
+
+    static fetchShowsEpisodes = (id) => {
+        return fetch(`${SHOWS_URL}/${id}/episodes`)
+            .then(episodes => episodes.json())
+            .then(episodes => createEpisodes(episodes))
     }
 }
 

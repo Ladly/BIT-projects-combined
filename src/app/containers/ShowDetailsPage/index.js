@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 
 import { 
     fetchShowDetailsAndCast,
-    fetchShowsCrew 
+    fetchShowsCrew ,
+    fetchShowsEpisodes,
+    clearEpisodesAndCrew
 } from './actions'
 
 import './style.scss'
@@ -33,30 +35,61 @@ class ShowDetailsPage extends Component {
             return <Loading />
         } else if(this.props.showCrewSuccess) {
             return this.props.showCrew.map((member, i) => {
-                return <li key={i} className="crew-list-item">{member.type}: {member.name} </li>
+                return <li key={i} className="crew-list-item"><b>{member.type}</b>: {member.name} </li>
             })
         } else if (this.props.showCrewError) {
             return <Error />
         }
     }
 
-    render() {        
+    displayEpisodes = () => {
+        if(this.props.showsEpisodesLoading){
+            return <Loading />
+        } else if(this.props.showsEpisodesSuccess) {
+            console.log(this.props.episodes)
+            return this.props.episodes.map(episode => {
+                return (
+                <li key={episode.id} className="episode-list-item">
+                Name: {episode.name}
+                Season: {episode.season}
+                <p> Plot:
+                {episode.summary}</p> 
+                </li>
+                )
+            })
+        } else if (this.props.showsEpisodesError) {
+            return <Error />
+        }
+    }
+
+    // checkIfRightShow = () => {
+    //     if(this.props.match.parmas.id !== )
+    // }
+
+
+    render() {    
+
         return (
             <div className="container">
                 {this.displayDetails()}
                 <div className="row">
                     <div className="col-6">
-                        <button className="btn btn-primary" onClick={() => this.props.showsCrew(this.props.match.params.id)}>Crew</button>
+                        <button 
+                            className="btn btn-primary" 
+                            onClick={() => this.props.showsCrew(this.props.match.params.id)}
+                            >Crew
+                        </button>
                         <ul className="crew-list">
                             {this.displayCrew()}
                         </ul>
                     </div> 
                     <div className="col-6">  
-                        <ul>
-                            <li>placeholder for episodes</li> 
-                            <li>will be added in next task</li> 
-
-                        </ul>
+                    <button 
+                        className="btn btn-primary" 
+                        onClick={() => this.props.showsEpisodes(this.props.match.params.id)}
+                        >Episodes
+                    </button>
+                    {this.displayEpisodes()}
                     </div>
                 </div>
             </div>
@@ -75,14 +108,21 @@ return {
         showCrewLoading: showDetails.fetchedShowsCrewLoading,
         showCrewSuccess: showDetails.fetchedShowsCrewSuccess,
         showCrewError: showDetails.fetchedShowsCrewError,
-        showCrew: showDetails.showsCrew
+        showCrew: showDetails.showsCrew,
+       
+        showsEpisodesLoading: showDetails.fetchedShowsEpisodesLoading,
+        showsEpisodesSuccess: showDetails.fetchedShowsEpisodesSuccess,
+        showsEpisodesError: showDetails.fetchedShowsEpisodesError,
+        episodes: showDetails.showsEpisodes
     }
 }
 
 const mapDispatchToProps = dispatch => {
 return {
         detailsAndCast: query => dispatch(fetchShowDetailsAndCast(query)),
-        showsCrew: id => dispatch(fetchShowsCrew(id))
+        showsCrew: id => dispatch(fetchShowsCrew(id)),
+        showsEpisodes: id => dispatch(fetchShowsEpisodes(id)),
+        clearEpisodesAndCrew: () => dispatch(clearEpisodesAndCrew())
     }
 }
 

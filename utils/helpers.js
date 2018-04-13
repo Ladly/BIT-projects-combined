@@ -4,6 +4,7 @@ import { Akas } from './../entities/Akas'
 import { Cast } from './../entities/Cast'
 import { Season } from './../entities/Season'
 import { Crew } from './../entities/Crew'
+import { Episode } from './../entities/Episode'
 
 export const createShow = (showsArray) => {
     return showsArray.map(show => {
@@ -36,5 +37,11 @@ export const createSeasons = (seasons) => {
 export const createCrew = (crew) => {
     return crew.map(member => {
         return new Crew(member.type, member.person)
+    })
+}
+
+export const createEpisodes = (episodes) => {
+    return episodes.map(episode => {
+        return new Episode(episode.id, episode.name, episode.season, episode.number, episode.summary)
     })
 }
