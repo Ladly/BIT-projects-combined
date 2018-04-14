@@ -12,7 +12,7 @@ export const SingleShowCard = (props) => {
 
     const displaySeasons = () => {
         return seasonsInstances.map((season, i) => {
-            return <li key={i}>Season {season.number}: premiere: {season.premiereDate} ends: {season.endDate}</li>
+            return <li onClick={() => props.fetchEpisodesBySeason(showDetails.id, season.number)} key={i}>Season {season.number}: premiere: {season.premiereDate} ends: {season.endDate}</li>
         })
     }
 

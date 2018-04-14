@@ -53,3 +53,10 @@ export const selectThreeTopShows = (showsArray) => {
 
     return sorted.reverse()
 }
+
+export const getSeasonEpisodes = (episodesArray, seasonNumber) => {
+    return episodesArray.filter(episode => {
+        return episode.season === seasonNumber
+    })
+
+}

@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { 
     fetchShowDetailsAndCast,
     fetchShowsCrew ,
-    fetchShowsEpisodes,
-    clearEpisodesAndCrew
+    clearEpisodesAndCrew,
+    fetchEpisodesBySeason
 } from './actions'
 
 import './style.scss'
@@ -24,7 +24,7 @@ class ShowDetailsPage extends Component {
         if(this.props.showDetailsLoading) {
             return <Loading />
         } else if(this.props.showDetailsSuccess) {
-            return <SingleShowCard showDetails={this.props.showDetails}/>
+            return <SingleShowCard showDetails={this.props.showDetails} fetchEpisodesBySeason={this.props.seasonsEpisodes}/>
         } else if (this.props.showDetailsError) {
             return <Error />
         }
@@ -43,21 +43,20 @@ class ShowDetailsPage extends Component {
     }
 
     displayEpisodes = () => {
-        if(this.props.showsEpisodesLoading){
+        if(this.props.seasonEpisodesLoading){
             return <Loading />
-        } else if(this.props.showsEpisodesSuccess) {
-            console.log(this.props.episodes)
-            return this.props.episodes.map(episode => {
+        } else if(this.props.seasonEpisodesSuccess) {
+            return this.props.seasonEpisodes.map(episode => {
                 return (
                 <li key={episode.id} className="episode-list-item">
-                Name: {episode.name}
-                Season: {episode.season}
+                Name: {episode.name}, Episode number {episode.number}, Season: {episode.season}
+                <hr />
                 <p> Plot:
                 {episode.summary}</p> 
                 </li>
                 )
             })
-        } else if (this.props.showsEpisodesError) {
+        } else if (this.props.seasonEpisodesError) {
             return <Error />
         }
     }
@@ -65,7 +64,7 @@ class ShowDetailsPage extends Component {
     render() {    
 
         return (
-            <div className="container">
+            <div className="container details-page-container">
                 {this.displayDetails()}
                 <div className="row">
                     <div className="col-6">
@@ -79,11 +78,6 @@ class ShowDetailsPage extends Component {
                         </ul>
                     </div> 
                     <div className="col-6">  
-                    <button 
-                        className="btn btn-primary" 
-                        onClick={() => this.props.showsEpisodes(this.props.match.params.id)}
-                        >Episodes
-                    </button>
                     {this.displayEpisodes()}
                     </div>
                 </div>
@@ -104,11 +98,16 @@ return {
         showCrewSuccess: showDetails.fetchedShowsCrewSuccess,
         showCrewError: showDetails.fetchedShowsCrewError,
         showCrew: showDetails.showsCrew,
-       
-        showsEpisodesLoading: showDetails.fetchedShowsEpisodesLoading,
-        showsEpisodesSuccess: showDetails.fetchedShowsEpisodesSuccess,
-        showsEpisodesError: showDetails.fetchedShowsEpisodesError,
-        episodes: showDetails.showsEpisodes
+
+        showCrewLoading: showDetails.fetchedShowsCrewLoading,
+        showCrewSuccess: showDetails.fetchedShowsCrewSuccess,
+        showCrewError: showDetails.fetchedShowsCrewError,
+        showCrew: showDetails.showsCrew,
+
+        seasonEpisodes: showDetails.seasonEpisodes,
+        seasonEpisodesLoading: showDetails.fetchedSeasonEpisodesLoading,
+        seasonEpisodesSuccess: showDetails.fetchedSeasonEpisodesSuccess,
+        seasonEpisodesError: showDetails.fetchedSeasonEpisodesError
     }
 }
 
@@ -116,7 +115,7 @@ const mapDispatchToProps = dispatch => {
 return {
         detailsAndCast: query => dispatch(fetchShowDetailsAndCast(query)),
         showsCrew: id => dispatch(fetchShowsCrew(id)),
-        showsEpisodes: id => dispatch(fetchShowsEpisodes(id)),
+        seasonsEpisodes: (id, seasonNumber) => dispatch(fetchEpisodesBySeason(id, seasonNumber)),
         clearEpisodesAndCrew: () => dispatch(clearEpisodesAndCrew())
     }
 }

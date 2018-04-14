@@ -8,6 +8,7 @@ import { createSeasons } from './../utils/helpers'
 import { createCrew } from './../utils/helpers'
 import { createEpisodes } from './../utils/helpers'
 import { selectThreeTopShows } from './../utils/helpers'
+import { getSeasonEpisodes } from './../utils/helpers'
 
 class ShowsService {
     static fetchShows = () => {
@@ -53,12 +54,6 @@ class ShowsService {
         .then(showsCrew => createCrew(showsCrew))
     }
 
-    static fetchShowsEpisodes = (id) => {
-        return fetch(`${SHOWS_URL}/${id}/episodes`)
-            .then(episodes => episodes.json())
-            .then(episodes => createEpisodes(episodes))
-    }
-
     static fetchTopThreeShows = () => {
         return fetch (SHOWS_URL)
             .then(shows => shows.json())
@@ -66,9 +61,13 @@ class ShowsService {
             .then(shows => shows.slice(0,3))
             .then(shows => createShow(shows))
     }
+
+    static fetchEpisodesBySeason = (id, seasonNumber) =>{
+        return fetch(`${SHOWS_URL}/${id}/episodes`)
+            .then(episodes => episodes.json())
+            .then(episodes => getSeasonEpisodes(episodes, seasonNumber))
+            .then(episodes => createEpisodes(episodes))
+    }
 }
-
-ShowsService.fetchTopThreeShows()
-
 
 export { ShowsService }

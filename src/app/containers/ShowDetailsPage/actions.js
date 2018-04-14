@@ -1,8 +1,8 @@
 import {
     FETCH_SHOW_DETAILS_AND_CAST,
     FETCH_SHOWS_CREW,
-    FETCH_SHOWS_EPISODES,
-    CLEAR_EPISODES_AND_CREW
+    CLEAR_EPISODES_AND_CREW,
+    FETCH_EPISODES_BY_SEASON
 } from  './constants'
 
 import { ShowsService } from './../../../../services/ShowsService'
@@ -21,16 +21,16 @@ export const fetchShowsCrew = (id) => {
     }
 }
 
-export const fetchShowsEpisodes = (id) => {
-    return {
-        type: FETCH_SHOWS_EPISODES,
-        payload: ShowsService.fetchShowsEpisodes(id)
-    }
-}
-
-export const clearEpisodesAndCrew = () => {
+export const clearEpisodesAndCrew = () => { // todo
     return {
         type: CLEAR_EPISODES_AND_CREW,
         payload: []
+    }
+}
+
+export const fetchEpisodesBySeason = (id, seasonNumber) => {
+    return {
+        type: FETCH_EPISODES_BY_SEASON,
+        payload: ShowsService.fetchEpisodesBySeason(id, seasonNumber)
     }
 }

@@ -7,9 +7,15 @@ import {
     FETCH_SHOWS_CREW_FULFILLED,
     FETCH_SHOWS_CREW_REJECTED,
 
-    FETCH_SHOWS_EPISODES_PENDING,
+    FETCH_SHOWS_EPISODES_PENDING, //to be removed
     FETCH_SHOWS_EPISODES_FULFILLED,
-    FETCH_SHOWS_EPISODES_REJECTED
+    FETCH_SHOWS_EPISODES_REJECTED,
+
+    FETCH_EPISODES_BY_SEASON_PENDING, //to be removed
+    FETCH_EPISODES_BY_SEASON_FULFILLED,
+    FETCH_EPISODES_BY_SEASON_REJECTED,
+
+
 } from './constants'
 
 const initialState = {
@@ -23,10 +29,10 @@ const initialState = {
     fetchedShowsCrewSuccess: false,
     fetchedShowsCrewError: false,
 
-    showsEpisodes: [],
-    fetchedShowsEpisodesLoading: false,
-    fetchedShowsEpisodesSuccess: false,
-    fetchedShowsEpisodesError: false
+    seasonEpisodes: [],
+    fetchedSeasonEpisodesLoading: false,
+    fetchedSeasonEpisodesSuccess: false,
+    fetchedSeasonEpisodesError: false
 }
 
 export const showDetailsReducer = (state = initialState, action) => {
@@ -78,27 +84,27 @@ export const showDetailsReducer = (state = initialState, action) => {
             }
             break;
 
-
-        case FETCH_SHOWS_EPISODES_PENDING:
+        
+        case FETCH_EPISODES_BY_SEASON_PENDING:
             return {
                 ...state,
-                fetchedShowsEpisodesLoading: true
+                fetchedSeasonEpisodesLoading: true
             }
             break;
-        case FETCH_SHOWS_EPISODES_FULFILLED:
+        case FETCH_EPISODES_BY_SEASON_FULFILLED:
             return {
                 ...state,
-                fetchedShowsEpisodesLoading:false,
-                fetchedShowsEpisodesSuccess: true,
-                showsEpisodes: action.payload
+                fetchedSeasonEpisodesLoading: false,
+                fetchedSeasonEpisodesSuccess: true,
+                seasonEpisodes: action.payload
             }            
             break;
-        case FETCH_SHOWS_EPISODES_REJECTED:
+        case FETCH_EPISODES_BY_SEASON_REJECTED:
             return {
                 ...state,
-                fetchedShowsEpisodesLoading: false,
-                fetchedShowsEpisodesSuccess: false,
-                fetchedShowsEpisodesError: true
+                fetchedSeasonEpisodesLoading: false,
+                fetchedSeasonEpisodesSuccess: false,
+                fetchedSeasonEpisodesError: true
             }
             break;
 
