@@ -28,7 +28,7 @@ export const SingleShowCard = (props) => {
             <ShowAKA akas={akasInstances}/>
             <p>{showDetails.summary}</p>
             <div className="row">
-                <div className="image-holder col-sm-6">
+                <div className="image-holder col-sm-3">
                     <img className="show-poster" src={showDetails.image} alt="poster"/>
                 </div>
                 <div>

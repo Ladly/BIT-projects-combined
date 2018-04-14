@@ -62,11 +62,6 @@ class ShowDetailsPage extends Component {
         }
     }
 
-    // checkIfRightShow = () => {
-    //     if(this.props.match.parmas.id !== )
-    // }
-
-
     render() {    
 
         return (

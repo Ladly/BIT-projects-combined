@@ -8,7 +8,7 @@ import { Episode } from './../entities/Episode'
 
 export const createShow = (showsArray) => {
     return showsArray.map(show => {
-        return new Show(show.id, show.name, show.image)
+        return new Show(show.id, show.name, show.image, show.rating)
     })
 }
 
@@ -44,4 +44,12 @@ export const createEpisodes = (episodes) => {
     return episodes.map(episode => {
         return new Episode(episode.id, episode.name, episode.season, episode.number, episode.summary)
     })
+}
+
+export const selectThreeTopShows = (showsArray) => {
+    const sorted = showsArray.sort((a, b) => {
+        return a.rating.average - b.rating.average
+    })
+
+    return sorted.reverse()
 }

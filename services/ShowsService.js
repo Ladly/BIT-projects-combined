@@ -7,6 +7,7 @@ import { createCast } from './../utils/helpers'
 import { createSeasons } from './../utils/helpers'
 import { createCrew } from './../utils/helpers'
 import { createEpisodes } from './../utils/helpers'
+import { selectThreeTopShows } from './../utils/helpers'
 
 class ShowsService {
     static fetchShows = () => {
@@ -57,7 +58,17 @@ class ShowsService {
             .then(episodes => episodes.json())
             .then(episodes => createEpisodes(episodes))
     }
+
+    static fetchTopThreeShows = () => {
+        return fetch (SHOWS_URL)
+            .then(shows => shows.json())
+            .then(shows => selectThreeTopShows(shows))
+            .then(shows => shows.slice(0,3))
+            .then(shows => createShow(shows))
+    }
 }
+
+ShowsService.fetchTopThreeShows()
 
 
 export { ShowsService }

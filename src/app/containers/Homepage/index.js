@@ -9,6 +9,8 @@ import { ShowCard } from './../../components/ShowCard'
 import { Loading } from './../../components/Loading'
 import { Error } from './../../components/Error'
 
+import Header from './../Header'
+
 class Homepage extends Component {
 
     componentDidMount() {
@@ -31,6 +33,7 @@ class Homepage extends Component {
     render() {
         return (
             <div className="container main">
+                <Header />
                 <h1 className="page-title text-center">Popular Shows</h1>
                 <div className="row">
                     {this.displayShows()}
