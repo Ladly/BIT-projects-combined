@@ -18,7 +18,10 @@ export const SingleShowCard = (props) => {
 
     const displayCast = () => {
         return castInstances.map((cast,i) => {
-            return <li key={i}><b>{cast.name}</b> as {cast.character}</li>
+            if(i > 3) {
+                return false
+            }
+            return <li key={i} className="cast-list-item"><b>{cast.name}</b> as {cast.character}</li>
         })
     }
 
@@ -26,20 +29,33 @@ export const SingleShowCard = (props) => {
         <Fragment>
             <h1 className="text-center page-title">{showDetails.name}</h1>
             <ShowAKA akas={akasInstances}/>
-            <p>{showDetails.summary}</p>
-            <div className="row">
-                <div className="image-holder col-sm-3">
-                    <img className="show-poster" src={showDetails.image} alt="poster"/>
-                </div>
-                <div>
-                    <h3>Seasons:</h3>
-                    <ul>
-                        {displaySeasons()}
-                    </ul>
-                    <h3>Cast:</h3>
-                    <ul>
-                        {displayCast()}
-                    </ul>
+            <div className="show-details-content">
+                <p>{showDetails.summary}</p>
+                <div className="row">
+                    <div className="image-holder col-sm-3">
+                        <img className="show-poster" src={showDetails.image} alt="poster"/>
+                    </div>
+                    <div className="col-sm-5">
+                        <h5>Cast:</h5>
+                        <ul className="cast-list">
+                            {displayCast()}
+                        </ul> 
+                        <button className="btn btn-primary">Show all</button>               
+                    </div>
+                    <div className="col-sm-4">
+                        <button onClick={() => props.showsCrew(showDetails.id)} className="btn btn-primary">Crew</button>
+                        <ul className="crew-list">
+                            {props.displayCrew()}
+                        </ul>
+                    </div>
+                </div> 
+                <div className="row">
+                    <div className="col-sm-6">
+                        <h3>Seasons:</h3>
+                        <ul>
+                            {displaySeasons()}
+                        </ul>
+                    </div> 
                 </div>
             </div> 
         </Fragment>

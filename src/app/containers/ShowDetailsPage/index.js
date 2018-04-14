@@ -18,13 +18,14 @@ class ShowDetailsPage extends Component {
 
     componentDidMount() {
         this.props.detailsAndCast(this.props.match.params.id)
+        this.props.seasonsEpisodes(this.props.match.params.id, 1)
     }
 
     displayDetails = () => {
         if(this.props.showDetailsLoading) {
             return <Loading />
         } else if(this.props.showDetailsSuccess) {
-            return <SingleShowCard showDetails={this.props.showDetails} fetchEpisodesBySeason={this.props.seasonsEpisodes}/>
+            return <SingleShowCard showDetails={this.props.showDetails} fetchEpisodesBySeason={this.props.seasonsEpisodes} showsCrew={this.props.showsCrew} displayCrew={this.displayCrew}/>
         } else if (this.props.showDetailsError) {
             return <Error />
         }
@@ -35,6 +36,9 @@ class ShowDetailsPage extends Component {
             return <Loading />
         } else if(this.props.showCrewSuccess) {
             return this.props.showCrew.map((member, i) => {
+                if(i > 3) {
+                    return false
+                }
                 return <li key={i} className="crew-list-item"><b>{member.type}</b>: {member.name} </li>
             })
         } else if (this.props.showCrewError) {
@@ -49,7 +53,7 @@ class ShowDetailsPage extends Component {
             return this.props.seasonEpisodes.map(episode => {
                 return (
                 <li key={episode.id} className="episode-list-item">
-                Name: {episode.name}, Episode number {episode.number}, Season: {episode.season}
+                <h4 className="text-center">Name: {episode.name}, Episode number {episode.number}, Season: {episode.season}</h4>
                 <hr />
                 <p> Plot:
                 {episode.summary}</p> 
@@ -61,25 +65,12 @@ class ShowDetailsPage extends Component {
         }
     }
 
-    render() {    
-
+    render() {  
         return (
             <div className="container details-page-container">
-                {this.displayDetails()}
-                <div className="row">
-                    <div className="col-6">
-                        <button 
-                            className="btn btn-primary" 
-                            onClick={() => this.props.showsCrew(this.props.match.params.id)}
-                            >Crew
-                        </button>
-                        <ul className="crew-list">
-                            {this.displayCrew()}
-                        </ul>
-                    </div> 
-                    <div className="col-6">  
+                {this.displayDetails()} 
+                <div>  
                     {this.displayEpisodes()}
-                    </div>
                 </div>
             </div>
         )
@@ -93,11 +84,6 @@ return {
         showDetailsSuccess: showDetails.fetchedShowDetailsSuccess,
         showDetailsError: showDetails.fetchedShowDetailsError,
         showDetails: showDetails.showDetailsAndCast,
-
-        showCrewLoading: showDetails.fetchedShowsCrewLoading,
-        showCrewSuccess: showDetails.fetchedShowsCrewSuccess,
-        showCrewError: showDetails.fetchedShowsCrewError,
-        showCrew: showDetails.showsCrew,
 
         showCrewLoading: showDetails.fetchedShowsCrewLoading,
         showCrewSuccess: showDetails.fetchedShowsCrewSuccess,
