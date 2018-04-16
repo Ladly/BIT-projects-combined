@@ -33,7 +33,6 @@ class Header extends Component {
     }
 
     render() {
-        console.log('index', this.props.topThreeShows)
         return (
             <div className="jumbotron">
                 <h1 className="display-4 text-center">Bit Show</h1>

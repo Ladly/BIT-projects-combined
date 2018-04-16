@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { 
     fetchShowDetailsAndCast,
@@ -69,6 +70,7 @@ class ShowDetailsPage extends Component {
         return (
             <div className="container details-page-container">
                 {this.displayDetails()} 
+                <Link className="btn btn-primary" to={`/comments/${this.props.match.params.id}`}>Comment</Link>
                 <div>  
                     {this.displayEpisodes()}
                 </div>
