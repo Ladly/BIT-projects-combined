@@ -1,14 +1,16 @@
 import {
     FETCH_FALSE_USERS_PENDING,
     FETCH_FALSE_USERS_FULFILLED,
-    FETCH_FALSE_USERS_REJECTED
+    FETCH_FALSE_USERS_REJECTED,
+    SWITCH_VIEW
 } from './constants'
 
 const initialState = {
     fetchedFalseUsers: [],
     fetchedFalseUsersLoading: false,
     fetchedFalseUsersSuccess: false,
-    fetchedFalseUsersError: false
+    fetchedFalseUsersError: false,
+    displayCardView: false
 }
 
 export const falseUsersReducer = (state = initialState, action) => {
@@ -30,6 +32,12 @@ export const falseUsersReducer = (state = initialState, action) => {
                 fetchedFalseUsersLoading: false,
                 fetchedFalseUsersSuccess: false,
                 fetchedFalseUsersError: true
+            }
+
+            case SWITCH_VIEW:
+            return {
+                ...state,
+                displayCardView: action.payload
             }
         default:
             return state
