@@ -64,7 +64,14 @@ class ShowUsersPage extends Component {
     render() {
         return (
             <div className="container">
-            <button onClick={() => this.props.switchView(this.props.displayCardView)} className="btn btn-primary">{this.pickButtonDisplay()}</button>
+                <div className="row">
+                    <div className="col-sm-6">
+                        <button onClick={() => this.props.switchView(this.props.displayCardView)} className="btn btn-primary">{this.pickButtonDisplay()}</button>
+                    </div>
+                    <div className="col-sm-6">
+                        <button onClick={() => this.props.fetchShowUsers()} className="btn btn-primary">Refresh users</button>
+                    </div>
+                </div>
                 <div className="row">
                     {this.pickView()}
                 </div>
