@@ -14,7 +14,8 @@ export const createShow = (showsArray) => {
 }
 
 export const createShowDetails = (obj) => {
-    return new ShowDetails(obj.id, obj.image, obj.summary, obj.name, obj.akasInstances, obj.castInstances, obj.seasonsInstances)
+    const tagLessShowSummary = removeTags(obj.summary)
+    return new ShowDetails(obj.id, obj.image,tagLessShowSummary , obj.name, obj.akasInstances, obj.castInstances, obj.seasonsInstances)
 }
 
 export const createAkas = (arr) => {
@@ -43,7 +44,8 @@ export const createCrew = (crew) => {
 
 export const createEpisodes = (episodes) => {
     return episodes.map(episode => {
-        return new Episode(episode.id, episode.name, episode.season, episode.number, episode.summary)
+        const tagLessEpisodeSummary = removeTags(episode.summary)
+        return new Episode(episode.id, episode.name, episode.season, episode.number, tagLessEpisodeSummary)
     })
 }
 
@@ -86,5 +88,16 @@ export const formatDate = (date) => {
     const formatedDate = `${birthday}.${month}.${year}`
     return formatedDate
 }
+
+export const removeTags = (string) => {
+    const tagLessString = 
+    string.replace('<p>', '')
+    .replace('</p>', '')
+    .replace('<b>', '')
+    .replace('</b>', '')
+    
+    return tagLessString
+}
+
 
 
