@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 import { 
     fetchShowUsers,
-    switchView 
+    switchView,
+    getUsersFromLocalStorage
 } from './actions'
 
 import { Loading } from './../../components/Loading'
@@ -11,13 +12,22 @@ import { Error } from './../../components/Error'
 import { UserCard } from './../../components/UserCard'
 import { UserListItem } from './../../components/UserListItem'
 
+import { LocalStorageService } from './../../../../services/LocalStorageService'
 
 import './style.scss'
 
 class ShowUsersPage extends Component {
 
     componentDidMount() {
-        this.props.fetchShowUsers()
+        if(localStorage.getItem('users') === null) {
+            this.props.fetchShowUsers()
+                .then(users => {
+                    const { value } = users
+                    LocalStorageService.addItemLocalStorage('users', value)
+                })
+        } else {
+            this.props.getUsersFromLocalStorage("users")
+        }
     }
 
     displayUsersCard = () => {
@@ -61,6 +71,14 @@ class ShowUsersPage extends Component {
         return !this.props.displayCardView ? "Grid view" : "List view"
     }
 
+    getAndStoreUsers = () => {
+        this.props.fetchShowUsers() 
+            .then(users => {
+                const { value } = users
+                LocalStorageService.addItemLocalStorage('users', value)
+            })
+    }
+
     render() {
         return (
             <div className="container">
@@ -69,7 +87,7 @@ class ShowUsersPage extends Component {
                         <button onClick={() => this.props.switchView(this.props.displayCardView)} className="btn btn-primary">{this.pickButtonDisplay()}</button>
                     </div>
                     <div className="col-sm-6">
-                        <button onClick={() => this.props.fetchShowUsers()} className="btn btn-primary">Refresh users</button>
+                        <button onClick={this.getAndStoreUsers} className="btn btn-primary">Refresh users</button>
                     </div>
                 </div>
                 <div className="row">
@@ -93,7 +111,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchShowUsers: () => dispatch(fetchShowUsers()),
-        switchView: (currentView) => dispatch(switchView(currentView))
+        switchView: (currentView) => dispatch(switchView(currentView)),
+        getUsersFromLocalStorage: (key) => dispatch(getUsersFromLocalStorage(key)),
         }
 }
 

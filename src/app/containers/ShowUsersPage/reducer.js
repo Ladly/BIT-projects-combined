@@ -2,7 +2,8 @@ import {
     FETCH_SHOW_USERS_PENDING,
     FETCH_SHOW_USERS_FULFILLED,
     FETCH_SHOW_USERS_REJECTED,
-    SWITCH_VIEW
+    SWITCH_VIEW,
+    GET_USERS_FROM_LOCAL_STORAGE
 } from './constants'
 
 const initialState = {
@@ -34,6 +35,12 @@ export const showUsersReducer = (state = initialState, action) => {
                 fetchedShowUsersError: true
             }
 
+            case GET_USERS_FROM_LOCAL_STORAGE:
+            return {
+                ...state,
+                fetchedShowUsersSuccess: true,
+                fetchedShowUsers: action.payload
+            }
             case SWITCH_VIEW:
             return {
                 ...state,
