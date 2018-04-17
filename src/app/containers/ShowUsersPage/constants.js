@@ -1,0 +1,7 @@
+export const FETCH_SHOW_USERS = 'showUsersPage/FETCH_SHOW_USERS'
+
+export const FETCH_SHOW_USERS_PENDING = 'showUsersPage/FETCH_SHOW_USERS_PENDING'
+export const FETCH_SHOW_USERS_FULFILLED = 'showUsersPage/FETCH_SHOW_USERS_FULFILLED'
+export const FETCH_SHOW_USERS_REJECTED = 'showUsersPage/FETCH_SHOW_USERS_REJECTED'
+
+export const SWITCH_VIEW = 'showUsersPage/SWITCH_VIEW'

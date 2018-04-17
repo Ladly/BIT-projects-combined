@@ -16,7 +16,7 @@ export const Navigation = () => {
                             <Link to="/" className="nav-link">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/falseusers" className="nav-link">Api users</Link>
+                            <Link to="/showusers" className="nav-link">Api users</Link>
                         </li>
                     </ul>
                 </div>

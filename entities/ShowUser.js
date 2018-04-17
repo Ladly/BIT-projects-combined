@@ -1,4 +1,4 @@
-class FalseUser  {
+class ShowUser  {
     constructor(dob, email, gender, name, picture) {
         this.dob = dob
         this.email = email
@@ -9,4 +9,4 @@ class FalseUser  {
     }
 }
 
-export { FalseUser }
+export { ShowUser }
