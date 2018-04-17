@@ -53,17 +53,18 @@ class FalseUsersPage extends Component {
         }
     }
 
-
     pickView = () => {
         return !this.props.displayCardView ? this.displayUsersList() : this.displayUsersCard()
     }
 
-
+    pickButtonDisplay = () => {
+        return !this.props.displayCardView ? "Grid view" : "List view"
+    }
 
     render() {
         return (
             <div className="container">
-            <button onClick={() => this.props.switchView(this.props.displayCardView)} className="btn btn-primary">Switch View</button>
+            <button onClick={() => this.props.switchView(this.props.displayCardView)} className="btn btn-primary">{this.pickButtonDisplay()}</button>
                 <div className="row">
                     {this.pickView()}
                 </div>
