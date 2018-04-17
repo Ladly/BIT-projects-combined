@@ -5,6 +5,7 @@ import { Cast } from './../entities/Cast'
 import { Season } from './../entities/Season'
 import { Crew } from './../entities/Crew'
 import { Episode } from './../entities/Episode'
+import { FalseUser } from './../entities/FalseUser'
 
 export const createShow = (showsArray) => {
     return showsArray.map(show => {
@@ -58,5 +59,10 @@ export const getSeasonEpisodes = (episodesArray, seasonNumber) => {
     return episodesArray.filter(episode => {
         return episode.season === seasonNumber
     })
+}
 
+export const createFalseUser = (usersArray) => {
+    return usersArray.map(user => {
+        return new FalseUser(user.dob, user.email, user.gender, user.name, user.picture, user.last)
+    })
 }
