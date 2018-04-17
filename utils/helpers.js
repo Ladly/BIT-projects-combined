@@ -63,6 +63,28 @@ export const getSeasonEpisodes = (episodesArray, seasonNumber) => {
 
 export const createFalseUser = (usersArray) => {
     return usersArray.map(user => {
-        return new FalseUser(user.dob, user.email, user.gender, user.name, user.picture, user.last)
+        const formatedDate = formatDate(user.dob)
+        const hiddenEmail = hideEmail(user.email)
+        return new FalseUser(formatedDate, hiddenEmail, user.gender, user.name, user.picture, user.last)
     })
 }
+
+export const hideEmail = (email) => {
+    const firstPart = email.slice(0,3)
+    const endPart = email.slice(email.indexOf('@') )
+
+    const hiddenEmail = `${firstPart}...${endPart}`
+    return hiddenEmail
+}
+
+export const formatDate = (date) => {
+    const newDate = new Date(date)
+    const birthday = newDate.getDate()
+    const month = newDate.getMonth()
+    const year = newDate.getFullYear()
+
+    const formatedDate = `${birthday}.${month}.${year}`
+    return formatedDate
+}
+
+

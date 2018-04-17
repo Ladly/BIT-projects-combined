@@ -1,14 +1,16 @@
 import { SHOWS_URL } from './../utils/constants'
 
-import { createShow } from './../utils/helpers'
-import { createShowDetails } from './../utils/helpers'
-import { createAkas } from './../utils/helpers'
-import { createCast } from './../utils/helpers'
-import { createSeasons } from './../utils/helpers'
-import { createCrew } from './../utils/helpers'
-import { createEpisodes } from './../utils/helpers'
-import { selectThreeTopShows } from './../utils/helpers'
-import { getSeasonEpisodes } from './../utils/helpers'
+import {
+    createShow,
+    createShowDetails,
+    createAkas,
+    createCast,
+    createSeasons,
+    createCrew,
+    createEpisodes,
+    selectThreeTopShows,
+    getSeasonEpisodes
+} from './../utils/helpers'
 
 class ShowsService {
     static fetchShows = () => {

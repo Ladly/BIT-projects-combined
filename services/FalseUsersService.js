@@ -1,6 +1,10 @@
 import { FALSE_USERS_URL } from './../utils/constants'
 
-import { createFalseUser } from './../utils/helpers'
+import {
+    createFalseUser,
+    formatDate,
+    hideEmail,
+} from './../utils/helpers'
 
 class FalseUsersService {
     static fetchFalseUsers = () => {
