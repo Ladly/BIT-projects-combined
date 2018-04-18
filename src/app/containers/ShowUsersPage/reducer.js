@@ -16,7 +16,6 @@ const initialState = {
 }
 
 export const showUsersReducer = (state = initialState, action) => {
-    console.log('act', action.payload)
     switch(action.type) {
         case FETCH_SHOW_USERS_PENDING:
             return {

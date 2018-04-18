@@ -10,6 +10,7 @@ import { searchInputReducer } from './../app/containers/SearchInput/reducer'
 import { headerReducer } from './../app/containers/Header/reducer'
 import { commentsReducer } from './../app/containers/CommentsPage/reducer'
 import { showUsersReducer } from './../app/containers/ShowUsersPage/reducer'
+import { blogPageReducer } from './../app/containers/BlogPage/reducer'
 
 const rootReducer = combineReducers({
 	homepageReducer,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
 	searchInputReducer,
 	headerReducer,
 	commentsReducer,
-	showUsersReducer
+	showUsersReducer,
+	blogPageReducer
 })
 export { rootReducer }
 

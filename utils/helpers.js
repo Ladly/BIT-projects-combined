@@ -6,6 +6,7 @@ import { Season } from './../entities/Season'
 import { Crew } from './../entities/Crew'
 import { Episode } from './../entities/Episode'
 import { ShowUser } from './../entities/ShowUser'
+import { BlogPost } from './../entities/BlogPost'
 
 export const createShow = (showsArray) => {
     return showsArray.map(show => {
@@ -99,5 +100,17 @@ export const removeTags = (string) => {
     return tagLessString
 }
 
+export const createBlogPosts = (blogPostsArray) => {
+    return blogPostsArray.map(blogPost => {
+        return new BlogPost (blogPost.userId, blogPost.id, blogPost.title, blogPost.body)
+    })
+}
 
+export const getRandomPosts = (blogPostsArray) => {             //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+    for (let i = blogPostsArray.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [blogPostsArray[i], blogPostsArray[j]] = [blogPostsArray[j], blogPostsArray[i]];
+        }
+        return blogPostsArray.slice(45, 55)
+    }
 

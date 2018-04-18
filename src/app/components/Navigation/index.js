@@ -18,6 +18,9 @@ export const Navigation = () => {
                         <li className="nav-item">
                             <Link to="/showusers" className="nav-link">Show users</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/blog" className="nav-link">Blog</Link>
+                        </li>
                     </ul>
                 </div>
                 <SearchInput />
