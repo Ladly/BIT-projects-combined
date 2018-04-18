@@ -10,7 +10,6 @@ class BlogPostService {
             .then(blogPosts => blogPosts.json())            
             .then(blogPosts => getRandomPosts(blogPosts))
             .then(blogPosts => createBlogPosts(blogPosts))
-            .then(blogPosts => console.log(blogPosts))
     }
 }
 

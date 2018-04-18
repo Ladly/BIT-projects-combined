@@ -114,3 +114,7 @@ export const getRandomPosts = (blogPostsArray) => {             //https://stacko
         return blogPostsArray.slice(45, 55)
     }
 
+export const formatText = (string, from, to) => {
+    return `${string.slice(from, to)}...`
+}
+
