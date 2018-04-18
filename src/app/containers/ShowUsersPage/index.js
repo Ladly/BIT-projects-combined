@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { 
     fetchShowUsers,
     switchView,
-    getUsersFromLocalStorage
+    getUsersFromLocalStorage,
+    getViewFromLocalStorage
 } from './actions'
 
 import { Loading } from './../../components/Loading'
@@ -26,8 +27,10 @@ class ShowUsersPage extends Component {
                     LocalStorageService.addItemLocalStorage('users', value)
                 })
         } else {
-            this.props.getUsersFromLocalStorage("users")
+            this.props.getUsersFromLocalStorage('users')
         }
+
+        this.props.getViewFromLocalStorage('view')
     }
 
     displayUsersCard = () => {
@@ -42,7 +45,7 @@ class ShowUsersPage extends Component {
         }
     }
 
-    displayUsersList = () => {
+    displayUsersList = () => {        
         if(this.props.showUsersLoading) {
             return <Loading />
         } else if (this.props.showUsersSuccess) {
@@ -50,7 +53,7 @@ class ShowUsersPage extends Component {
                 return (
                     <UserListItem key={i} showUser={showUser}/>
                 )
-            })
+            })           
 
             return (
                 <ul className="list-group list-group-flush">
@@ -64,11 +67,11 @@ class ShowUsersPage extends Component {
     }
 
     pickView = () => {
-        return !this.props.displayCardView ? this.displayUsersList() : this.displayUsersCard()
+        return !this.props.currentView ? this.displayUsersList() : this.displayUsersCard()
     }
 
     pickButtonDisplay = () => {
-        return !this.props.displayCardView ? "Grid view" : "List view"
+        return !this.props.currentView ? "Grid view" : "List view"
     }
 
     getAndStoreUsers = () => {
@@ -79,12 +82,17 @@ class ShowUsersPage extends Component {
             })
     }
 
+    saveAndChangeView = () => {        
+        this.props.switchView(this.props.currentView)
+        LocalStorageService.addItemLocalStorage('view', !this.props.currentView)
+    }
+
     render() {
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-sm-6">
-                        <button onClick={() => this.props.switchView(this.props.displayCardView)} className="btn btn-primary">{this.pickButtonDisplay()}</button>
+                        <button onClick={this.saveAndChangeView} className="btn btn-primary">{this.pickButtonDisplay()}</button>
                     </div>
                     <div className="col-sm-6">
                         <button onClick={this.getAndStoreUsers} className="btn btn-primary">Refresh users</button>
@@ -104,7 +112,7 @@ const mapStateToProps = state => {
         showUsersLoading: state.showUsersReducer.fetchedShowUsersLoading,
         showUsersSuccess: state.showUsersReducer.fetchedShowUsersSuccess,
         showUsersError: state.showUsersReducer.fetchedShowUsersError,
-        displayCardView: state.showUsersReducer.displayCardView,
+        currentView: state.showUsersReducer.displayCardView,
     }
 }
 
@@ -113,6 +121,7 @@ const mapDispatchToProps = dispatch => {
         fetchShowUsers: () => dispatch(fetchShowUsers()),
         switchView: (currentView) => dispatch(switchView(currentView)),
         getUsersFromLocalStorage: (key) => dispatch(getUsersFromLocalStorage(key)),
+        getViewFromLocalStorage: (key) => dispatch(getViewFromLocalStorage(key)),
         }
 }
 

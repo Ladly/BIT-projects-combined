@@ -54,10 +54,9 @@ class ShowDetailsPage extends Component {
             return this.props.seasonEpisodes.map(episode => {
                 return (
                 <li key={episode.id} className="episode-list-item">
-                <h4 className="text-center">Name: {episode.name}, Episode number {episode.number}, Season: {episode.season}</h4>
-                <hr />
-                <p> Plot:
-                {episode.summary}</p> 
+                    <h4 className="text-center">Name: {episode.name}, Episode number {episode.number}, Season: {episode.season}</h4>
+                    <hr />
+                    <p> <b>Plot:</b> {episode.summary}</p> 
                 </li>
                 )
             })

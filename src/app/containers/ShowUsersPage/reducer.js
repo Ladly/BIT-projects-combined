@@ -3,7 +3,8 @@ import {
     FETCH_SHOW_USERS_FULFILLED,
     FETCH_SHOW_USERS_REJECTED,
     SWITCH_VIEW,
-    GET_USERS_FROM_LOCAL_STORAGE
+    GET_USERS_FROM_LOCAL_STORAGE,
+    GET_VIEW_FROM_LOCAL_STORAGE
 } from './constants'
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
 }
 
 export const showUsersReducer = (state = initialState, action) => {
+    console.log('act', action.payload)
     switch(action.type) {
         case FETCH_SHOW_USERS_PENDING:
             return {
@@ -41,6 +43,12 @@ export const showUsersReducer = (state = initialState, action) => {
                 fetchedShowUsersSuccess: true,
                 fetchedShowUsers: action.payload
             }
+            case GET_VIEW_FROM_LOCAL_STORAGE:
+            return {
+                ...state,
+                displayCardView: action.payload
+            }
+
             case SWITCH_VIEW:
             return {
                 ...state,
