@@ -100,12 +100,6 @@ export const removeTags = (string) => {
     return tagLessString
 }
 
-export const createBlogPosts = (blogPostsArray) => {
-    return blogPostsArray.map(blogPost => {
-        return new BlogPost (blogPost.userId, blogPost.id, blogPost.title, blogPost.body)
-    })
-}
-
 export const getRandomPosts = (blogPostsArray) => {             //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
     for (let i = blogPostsArray.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
@@ -116,5 +110,14 @@ export const getRandomPosts = (blogPostsArray) => {             //https://stacko
 
 export const formatText = (string, from, to) => {
     return `${string.slice(from, to)}...`
+}
+
+export const createBlogPost = (blogPost) => {
+    return new BlogPost (blogPost.userId, blogPost.id, blogPost.title, blogPost.body)
+}
+export const createBlogPosts = (blogPostsArray) => {
+    return blogPostsArray.map(blogPost => {
+        return new BlogPost (blogPost.userId, blogPost.id, blogPost.title, blogPost.body)
+    })
 }
 
