@@ -38,7 +38,11 @@ class AuthorsPosts extends Component {
             return <Loading />
         } else if(this.props.authorsPostsSuccess) {
             return this.props.authorsPosts.map(authorsPost => {
-                return <li key={authorsPost.id} className="list-group-item"><b>{formatText(authorsPost.title, 0, 60)}</b> - {formatText(authorsPost.body, 0, 60)}</li>                     
+                return (
+                    <Link key={authorsPost.id} to={`/blogpostauthordetails/${this.props.userId}`}>
+                        <li className="list-group-item"><b>{formatText(authorsPost.title, 0, 60)}</b> - {formatText(authorsPost.body, 0, 60)}</li>
+                    </Link>
+                )                     
             })
    
         } else {

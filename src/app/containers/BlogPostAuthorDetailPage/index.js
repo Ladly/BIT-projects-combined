@@ -1,13 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 import { 
     fetchAuthor
 } from './actions'
 
+import { formatText } from './../../../../utils/helpers'
+
 import { Loading } from './../../components/Loading'
 import { Error } from './../../components/Error'
-import { formatText } from './../../../../utils/helpers'
+import { AuthorsDetails } from './../../components/AuthorsDetails'
+import { AuthorsAddress } from './../../components/AuthorsAddress'
+import { AuthorsCompany } from './../../components/AuthorsCompany'
+
+import './style.scss'
+
 
 
 class BlogPostAuthorDetailsPage extends Component {
@@ -16,9 +23,29 @@ class BlogPostAuthorDetailsPage extends Component {
         this.props.getAuthor(this.props.match.params.id)         
     }
 
+    displayAuthorDetails = () => {
+        if(this.props.authorLoadingDetails) {
+
+            return <Loading />
+        } else if (this.props.authorSuccessDetails) {
+
+            return (
+                <Fragment>
+                    <h1 className="text-center author-details-header">Single author details</h1>
+                    <AuthorsDetails author={this.props.authorDetails}/>
+                    <hr />
+                    <AuthorsAddress author={this.props.authorDetails} />
+                    <hr />
+                    <AuthorsCompany author={this.props.authorDetails}/>
+                </Fragment>    
+            )
+        }
+    }
+
     render() {
         return (
             <div className="container">
+                {this.displayAuthorDetails()}
             </div>
         )
     }
@@ -26,10 +53,10 @@ class BlogPostAuthorDetailsPage extends Component {
 
 const mapStateToProps = state => {
     return {
-            author: state.authorsPostsReducer.fetchedAuthor,
-            authorLoading: state.authorsPostsReducer.fetchedAuthorLoading,
-            authorSuccess: state.authorsPostsReducer.fetchedAuthorSuccess,
-            authorError: state.authorsPostsReducer.fetchedAuthorError 
+            authorDetails: state.blogPostAuthorDetailReducer.fetchedAuthor,
+            authorLoadingDetails: state.blogPostAuthorDetailReducer.fetchedAuthorLoading,
+            authorSuccessDetails: state.blogPostAuthorDetailReducer.fetchedAuthorSuccess,
+            authorErrorDetails: state.blogPostAuthorDetailReducer.fetchedAuthorError 
         }
 }
 
