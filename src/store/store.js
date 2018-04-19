@@ -12,6 +12,7 @@ import { commentsReducer } from './../app/containers/CommentsPage/reducer'
 import { showUsersReducer } from './../app/containers/ShowUsersPage/reducer'
 import { blogPageReducer } from './../app/containers/BlogPage/reducer'
 import { blogPostDetailsReducer } from './../app/containers/BlogPostDetailsPage/reducer'
+import { authorsPostsReducer } from './../app/containers/AuthorsPosts/reducer'
 
 const rootReducer = combineReducers({
 	homepageReducer,
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
 	commentsReducer,
 	showUsersReducer,
 	blogPageReducer,
-	blogPostDetailsReducer
+	blogPostDetailsReducer,
+	authorsPostsReducer
 })
 export { rootReducer }
 

@@ -3,31 +3,33 @@ import { connect } from 'react-redux'
 
 import { fetchBlogPost } from './actions'
 
+import { BONUS_BLOG_TEXT } from './../../../../utils/bonusBlogText'
+
 import { Loading } from './../../components/Loading'
 import { Error } from './../../components/Error'
+import AuthorsPosts from './../AuthorsPosts'
 
-import { BONUS_BLOG_TEXT } from './../../../../utils/bonusBlogText'
 
 class BlogPostDetailsPage extends Component {
 
     componentDidMount() {
-        this.props.getBlogPost(this.props.match.params.id)
+        this.props.getBlogPost(this.props.match.params.id)      
     }
 
     displayBlogPost = () => {
         if(this.props.blogPostLoading) {
             return <Loading />
-        } else if(this.props.blogPostSuccess) {            
-            return (
-                
+        } else if(this.props.blogPostSuccess) {     
+            return (                
                 <Fragment>
-                     <div className="jumbotron">
+                    <div className="jumbotron">
                         <h1 className="display-4 text-center">{this.props.blogPost.title}</h1>
                     </div>                 
                     <div>
                         <p className="text-center">{`${this.props.blogPost.body} ${BONUS_BLOG_TEXT}`}</p>
                     </div>
                     <hr />
+                    <AuthorsPosts userId={this.props.blogPost.userId}/>
                 </Fragment>
             )
         } else {
@@ -37,8 +39,7 @@ class BlogPostDetailsPage extends Component {
 
     render() {
         return (
-            <div className="container">
-           
+            <div className="container">           
                 {this.displayBlogPost()}
             </div>
         )
@@ -47,16 +48,16 @@ class BlogPostDetailsPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        blogPost: state.blogPostDetailsReducer.fetchedBlogPost,
-        blogPostLoading: state.blogPostDetailsReducer.fetchedBlogPostLoading,
-        blogPostSuccess: state.blogPostDetailsReducer.fetchedBlogPostSuccess,
-        blogPostError: state.blogPostDetailsReducer.fetchedBlogPostError 
+            blogPost: state.blogPostDetailsReducer.fetchedBlogPost,
+            blogPostLoading: state.blogPostDetailsReducer.fetchedBlogPostLoading,
+            blogPostSuccess: state.blogPostDetailsReducer.fetchedBlogPostSuccess,
+            blogPostError: state.blogPostDetailsReducer.fetchedBlogPostError
         }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getBlogPost: (id) => dispatch(fetchBlogPost(id))
+        getBlogPost: (id) => dispatch(fetchBlogPost(id)),
         }
 }
 

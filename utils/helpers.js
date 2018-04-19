@@ -7,6 +7,7 @@ import { Crew } from './../entities/Crew'
 import { Episode } from './../entities/Episode'
 import { ShowUser } from './../entities/ShowUser'
 import { BlogPost } from './../entities/BlogPost'
+import { BlogPostAuthor } from './../entities/BlogPostAuthor'
 
 export const createShow = (showsArray) => {
     return showsArray.map(show => {
@@ -115,9 +116,15 @@ export const formatText = (string, from, to) => {
 export const createBlogPost = (blogPost) => {
     return new BlogPost (blogPost.userId, blogPost.id, blogPost.title, blogPost.body)
 }
+
 export const createBlogPosts = (blogPostsArray) => {
     return blogPostsArray.map(blogPost => {
         return new BlogPost (blogPost.userId, blogPost.id, blogPost.title, blogPost.body)
     })
+}
+
+export const createBlogPostAuthor = (author) => {
+    const { id, name, username, email, address, company } = author
+    return new BlogPostAuthor(id, name, username, email, address, company)
 }
 
