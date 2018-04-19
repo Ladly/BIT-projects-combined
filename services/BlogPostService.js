@@ -9,6 +9,7 @@ import {
     getRandomPosts,
     createBlogPostAuthor,
     createBlogPostAuthors
+    
  } from './../utils/helpers'
 
 class BlogPostService {
@@ -35,6 +36,12 @@ class BlogPostService {
         return fetch(`${BLOG_POST_AUTHOR}/${id}`)
             .then(author => author.json())
             .then(author => createBlogPostAuthor(author))
+    }
+
+    static fetchAuthors = () => {
+        return fetch(BLOG_POST_AUTHOR)
+            .then(authors => authors.json())
+            .then(authors => createBlogPostAuthors(authors))
     }
 }
 

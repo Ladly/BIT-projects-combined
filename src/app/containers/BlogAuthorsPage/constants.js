@@ -1,0 +1,5 @@
+export const FETCH_AUTHORS = "authorsPosts/FETCH_AUTHORS"
+
+export const FETCH_AUTHORS_PENDING = "authorsPosts/FETCH_AUTHORS_PENDING"
+export const FETCH_AUTHORS_FULFILLED = "authorsPosts/FETCH_AUTHORS_FULFILLED"
+export const FETCH_AUTHORS_REJECTED = "authorsPosts/FETCH_AUTHORS_REJECTED"
