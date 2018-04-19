@@ -128,3 +128,9 @@ export const createBlogPostAuthor = (author) => {
     return new BlogPostAuthor(id, name, username, email, address, company)
 }
 
+export const createBlogPostAuthors = (authorsArray) => {
+    return authorsArray.map(author => {
+        const { id, name, username, email, address, company } = author
+        return new BlogPostAuthor(id, name, username, email, address, company)
+    })
+}

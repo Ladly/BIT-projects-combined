@@ -8,6 +8,7 @@ import CommentsPage from './containers/CommentsPage'
 import ShowUsersPage from './containers/ShowUsersPage'
 import BlogPage from './containers/BlogPage'
 import BlogPostDetailsPage from './containers/BlogPostDetailsPage'
+import BlogPostAuthorDetailPage from './containers/BlogPostAuthorDetailPage'
 import { Footer } from './components/Footer'
 
 
@@ -23,6 +24,7 @@ export const App = () => {
                 <Route exact path="/showusers" component={ShowUsersPage}/>
                 <Route exact path="/blog" component={BlogPage}/>
                 <Route exact path="/blogpostdetails/:id" component={BlogPostDetailsPage}/>
+                <Route exact path="/blogpostauthordetails/:id" component={BlogPostAuthorDetailPage}/>
             </Switch>
             <Footer />
         </Fragment>

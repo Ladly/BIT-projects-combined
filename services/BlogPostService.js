@@ -7,7 +7,8 @@ import {
     createBlogPosts,
     createBlogPost,
     getRandomPosts,
-    createBlogPostAuthor
+    createBlogPostAuthor,
+    createBlogPostAuthors
  } from './../utils/helpers'
 
 class BlogPostService {
