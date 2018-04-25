@@ -24,6 +24,9 @@ export const Navigation = () => {
                         <li className="nav-item">
                             <Link to="/blogauthors" className="nav-link">Blog Authors</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/bookfeed" className="nav-link">Book Feed</Link>
+                        </li>
                     </ul>
                 </div>
                 <SearchInput />
