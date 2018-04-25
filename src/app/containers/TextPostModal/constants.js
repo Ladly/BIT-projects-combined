@@ -1,0 +1,5 @@
+export const POST_TEXT_DATA = 'textPostModal/POST_TEXT_DATA'
+
+export const POST_TEXT_DATA_PENDING = 'textPostModal/POST_TEXT_DATA_PENDING'
+export const POST_TEXT_DATA_FULFILLED = 'textPostModal/POST_TEXT_DATA_FULFILLED'
+export const POST_TEXT_DATA_REJECTED = 'textPostModal/POST_TEXT_DATA_REJECTED'
