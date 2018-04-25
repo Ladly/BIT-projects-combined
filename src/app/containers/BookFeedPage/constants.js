@@ -6,3 +6,6 @@ export const FETCH_BOOK_POSTS_REJECTED = "bookFeedPage/FETCH_BOOK_POSTS_REJECTED
 
 export const DISPLAY_TEXT_MODAL = "bookFeedPage/DISPLAY_TEXT_MODAL"
 export const HIDE_TEXT_MODAL = "bookFeedPage/HIDE_TEXT_MODAL"
+
+export const DISPLAY_IMAGE_MODAL = "bookFeedPage/DISPLAY_IMAGE_MODAL"
+export const HIDE_IMAGE_MODAL = "bookFeedPage/HIDE_IMAGE_MODAL"

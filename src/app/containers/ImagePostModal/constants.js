@@ -1,0 +1,5 @@
+export const POST_IMAGE_DATA = 'imagePostModal/POST_IMAGE_DATA'
+
+export const POST_IMAGE_DATA_PENDING = 'imagePostModal/POST_IMAGE_DATA_PENDING'
+export const POST_IMAGE_DATA_FULFILLED = 'imagePostModal/POST_IMAGE_DATA_FULFILLED'
+export const POST_IMAGE_DATA_REJECTED = 'imagePostModal/POST_IMAGE_DATA_REJECTED'

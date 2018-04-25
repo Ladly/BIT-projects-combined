@@ -17,6 +17,7 @@ import { blogPostAuthorDetailReducer } from './../app/containers/BlogPostAuthorD
 import { authorsPageReducer } from './../app/containers/BlogAuthorsPage/reducer'
 import { bookFeedReducer } from './../app/containers/BookFeedPage/reducer'
 import { textPostModalReducer } from './../app/containers/TextPostModal/reducer'
+import { imagePostModalReducer } from './../app/containers/ImagePostModal/reducer'
 
 const rootReducer = combineReducers({
 	homepageReducer,
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
 	blogPostAuthorDetailReducer,
 	authorsPageReducer,
 	bookFeedReducer,
-	textPostModalReducer
+	textPostModalReducer,
+	imagePostModalReducer
 })
 export { rootReducer }
 

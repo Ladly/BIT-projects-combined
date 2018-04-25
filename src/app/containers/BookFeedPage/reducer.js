@@ -4,7 +4,9 @@ import {
     FETCH_BOOK_POSTS_REJECTED,
     
     DISPLAY_TEXT_MODAL,
-    HIDE_TEXT_MODAL
+    HIDE_TEXT_MODAL,
+    DISPLAY_IMAGE_MODAL,
+    HIDE_IMAGE_MODAL
 } from './constants'
 
 const initialState = {
@@ -12,7 +14,8 @@ const initialState = {
     fetchedBookShowsLoading: false,
     fetchedBookShowsSuccess: false,
     fetchedBookShowsError: false,
-    displayTextModal: false
+    displayTextModal: false,
+    displayImageModal: false
 } 
 
 export const bookFeedReducer = (state = initialState, action) => {
@@ -30,6 +33,7 @@ export const bookFeedReducer = (state = initialState, action) => {
                 fetchedBookShowsSuccess: true,
                 fetchedBookShows: action.payload
             }
+            break
         case FETCH_BOOK_POSTS_REJECTED: 
             return {
                 ...state, 
@@ -42,11 +46,24 @@ export const bookFeedReducer = (state = initialState, action) => {
                 ...state,
                 displayTextModal: true
             }
+            break
         case HIDE_TEXT_MODAL: 
             return {
                 ...state, 
                 displayTextModal: false
 
+            }
+            break
+        case DISPLAY_IMAGE_MODAL: 
+            return {
+                ...state,
+                displayImageModal: true
+            }
+            break
+        case HIDE_IMAGE_MODAL: 
+            return {
+                ...state, 
+                displayImageModal: false
             }
             break
         default: 

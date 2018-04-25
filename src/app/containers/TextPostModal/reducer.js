@@ -5,7 +5,6 @@ import {
 } from './constants'
 
 const initialState = {
-    response: null,
     postDataLoading: false,
     postDataSuccess: false,
     postDataError: false
@@ -23,7 +22,6 @@ export const textPostModalReducer = (state = initialState, action) => {
                 ...state,
                 postDataLoading: false,
                 postDataSuccess: true,
-                response: action.payload
             }
         case POST_TEXT_DATA_REJECTED:
             return {
