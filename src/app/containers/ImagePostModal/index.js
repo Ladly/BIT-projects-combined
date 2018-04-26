@@ -6,6 +6,8 @@ import { postImageData } from './actions'
 import { Loading } from './../../components/Loading'
 import { Error } from './../../components/Error'
 
+import { validateBookImagePostUrl } from './../../../../utils/validations'
+
 import './style.scss'
 
 class ImagePostModal extends Component {
@@ -21,17 +23,21 @@ class ImagePostModal extends Component {
     }
 
     postData = () => {
-        this.props.postImgData(this.state.value)
-            .then(()=> {
-                console.log("functionnnnnnnnnnn",this.props)
-                if(this.props.postDataLoading) {
-                    return <Loading /> 
-                } else if (this.props.postDataSuccess) {
-                    this.clearAndHide()
-                } else {
-                    return <Error />
-                }
-            })
+        if(validateBookImagePostUrl(this.state.value)) {
+            this.props.postImgData(this.state.value)
+                .then(()=> {
+                    if(this.props.postDataLoading) {
+                        return <Loading /> 
+                    } else if (this.props.postDataSuccess) {
+                        this.clearAndHide()
+                    } else {
+                        return <Error />
+                    }
+                })
+        } else {
+            alert('Invalid url')
+            this.clearAndHide()
+        }
     }
 
     hideModal = () => {

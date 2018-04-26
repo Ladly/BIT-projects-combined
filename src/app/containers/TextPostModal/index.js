@@ -6,6 +6,8 @@ import { postTextData } from './actions'
 import { Loading } from './../../components/Loading'
 import { Error } from './../../components/Error'
 
+import { validateBookTextPost } from './../../../../utils/validations'
+
 import './style.scss'
 
 class TextPostModal extends Component {
@@ -21,16 +23,21 @@ class TextPostModal extends Component {
     }
 
     postData = () => {
-        this.props.postTxtData(this.state.value)
-            .then(()=> {
-                if(this.props.postDataLoading) {
-                    return <Loading /> 
-                } else if (this.props.postDataSuccess) {
-                    this.clearAndHide()
-                } else {
-                    return <Error />
-                }
-            })
+        if(validateBookTextPost(this.state.value)) {
+            this.props.postTxtData(this.state.value)
+                .then(()=> {
+                    if(this.props.postDataLoading) {
+                        return <Loading /> 
+                    } else if (this.props.postDataSuccess) {
+                        this.clearAndHide()
+                    } else {
+                        return <Error />
+                    }
+                })
+        } else {
+            alert('Text too short')
+            this.clearAndHide()
+        }
     }
 
     hideModal = () => {

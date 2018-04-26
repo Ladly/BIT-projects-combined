@@ -161,3 +161,7 @@ export const createBookPosts = (posts, textCB, imageCB, videoCB) => {
         }
     })
 }
+
+export const bookVideoPostUrlToEmbed = (url) => {
+    return url.replace('watch?v=', 'embed/')
+}

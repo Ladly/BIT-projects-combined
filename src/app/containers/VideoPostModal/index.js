@@ -6,6 +6,9 @@ import { postVideoData } from './actions'
 import { Loading } from './../../components/Loading'
 import { Error } from './../../components/Error'
 
+import { bookVideoPostUrlToEmbed } from './../../../../utils/helpers'
+import { validateBookVideoPost } from './../../../../utils/validations'
+
 import './style.scss'
 
 class VideoPostModal extends Component {
@@ -21,16 +24,22 @@ class VideoPostModal extends Component {
     }
 
     postData = () => {
-        this.props.postVidData(this.state.value)
-            .then(()=> {
-                if(this.props.postDataLoading) {
-                    return <Loading /> 
-                } else if (this.props.postDataSuccess) {
-                    this.clearAndHide()
-                } else {
-                    return <Error />
-                }
-            })
+        const formatedUrl = bookVideoPostUrlToEmbed(this.state.value)
+        if(validateBookVideoPost(formatedUrl)) {
+            this.props.postVidData(formatedUrl)
+                .then(()=> {
+                    if(this.props.postDataLoading) {
+                        return <Loading /> 
+                    } else if (this.props.postDataSuccess) {
+                        this.clearAndHide()
+                    } else {
+                        return <Error />
+                    }
+                })
+        } else {
+            alert('Invalid url')
+            this.clearAndHide()
+        }
     }
 
     hideModal = () => {
