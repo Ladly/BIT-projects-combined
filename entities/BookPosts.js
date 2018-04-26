@@ -1,9 +1,10 @@
 class BookPosts {
-    constructor(type, commentsNum, userId, id) {
-        this.type = type
+    constructor(commentsNum, dateCreated, id, userDisplayName, userId) {
         this.commentsNum = commentsNum
-        this.userId = userId
+        this.dateCreated = dateCreated
         this.id = id
+        this.user = userDisplayName
+        this.userId = userId
     }
 }
 

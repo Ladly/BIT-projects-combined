@@ -12,10 +12,10 @@ import {
 } from './constants'
 
 const initialState = {
-    fetchedBookShows: [],
-    fetchedBookShowsLoading: false,
-    fetchedBookShowsSuccess: false,
-    fetchedBookShowsError: false,
+    fetchedBookPosts: [],
+    fetchedBookPostsLoading: false,
+    fetchedBookPostsSuccess: false,
+    fetchedBookPostsError: false,
     displayTextModal: false,
     displayImageModal: false,
     displayVideoModal: false
@@ -26,23 +26,23 @@ export const bookFeedReducer = (state = initialState, action) => {
         case FETCH_BOOK_POSTS_PENDING:
             return {
                 ...state, 
-                fetchedBookShowsLoading: true
+                fetchedBookPostsLoading: true
             }
             break
         case FETCH_BOOK_POSTS_FULFILLED:
             return {
                 ...state, 
-                fetchedBookShowsLoading: false,
-                fetchedBookShowsSuccess: true,
-                fetchedBookShows: action.payload
+                fetchedBookPostsLoading: false,
+                fetchedBookPostsSuccess: true,
+                fetchedBookPosts: action.payload
             }
             break
         case FETCH_BOOK_POSTS_REJECTED: 
             return {
                 ...state, 
-                fetchedBookShowsLoading: false,
-                fetchedBookShowsSuccess: false,
-                fetchedBookShowsError: true
+                fetchedBookPostsLoading: false,
+                fetchedBookPostsSuccess: false,
+                fetchedBookPostsError: true
             }
         case DISPLAY_TEXT_MODAL: 
             return {

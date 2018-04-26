@@ -13,6 +13,9 @@ import {
 
 import { Loading } from './../../components/Loading'
 import { Error } from './../../components/Error'
+import { TextPostCard } from './../../components/TextPostCard'
+import { ImagePostCard } from './../../components/ImagePostCard'
+import { VideoPostCard } from './../../components/VideoPostCard'
 import TextPostModal  from './../TextPostModal'
 import ImagePostModal  from './../ImagePostModal'
 import VideoPostModal  from './../VideoPostModal'
@@ -25,11 +28,23 @@ class BookFeedPage extends Component {
         this.props.getBookPosts()
     }
 
+    selectCard = (posts) => {
+        return posts.map(post => {
+            if(post.type === 'text'){
+                return <TextPostCard key={post.id} post={post}/>
+            } else if(post.type === 'image') {
+                return <ImagePostCard key={post.id} post={post}/>
+            } else {
+                return <VideoPostCard key={post.id} post={post}/>
+            }
+        })
+    }
+
     displayPosts = () => {
         if(this.props.postsLoading) {
             return <Loading />
         } else if (this.props.postsSuccess) {
-            return 'success'
+            return this.selectCard(this.props.posts)
         } else {
             return <Error />
         }
@@ -66,10 +81,10 @@ class BookFeedPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        posts: state.bookFeedReducer.fetchedBookShows,
-        postsLoading: state.bookFeedReducer.fetchedBookShowsLoading,
-        postsSuccess: state.bookFeedReducer.fetchedBookShowsSuccess,
-        postsError: state.bookFeedReducer.fetchedBookShowsError,
+        posts: state.bookFeedReducer.fetchedBookPosts,
+        postsLoading: state.bookFeedReducer.fetchedBookPostsLoading,
+        postsSuccess: state.bookFeedReducer.fetchedBookPostsSuccess,
+        postsError: state.bookFeedReducer.fetchedBookPostsError,
         textModal: state.bookFeedReducer.displayTextModal,
         imageModal: state.bookFeedReducer.displayImageModal,
         videoModal: state.bookFeedReducer.displayVideoModal

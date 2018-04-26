@@ -8,6 +8,9 @@ import { Episode } from './../entities/Episode'
 import { ShowUser } from './../entities/ShowUser'
 import { BlogPost } from './../entities/BlogPost'
 import { BlogPostAuthor } from './../entities/BlogPostAuthor'
+import { BookTextPosts } from './../entities/BookTextPosts'
+import { BookImagePosts } from './../entities/BookImagePosts'
+import { BookVideoPosts } from './../entities/BookVideoPosts'
 
 export const createShow = (showsArray) => {
     return showsArray.map(show => {
@@ -132,5 +135,29 @@ export const createBlogPostAuthors = (authorsArray) => {
     return authorsArray.map(author => {
         const { id, name, username, email, address,phone, company } = author
         return new BlogPostAuthor(id, name, username, email, address, phone, company)
+    })
+}
+
+export const createBookTextPost = (post) => {
+    return new BookTextPosts(post.commentsNum, post.dateCreated, post.id, post.userDisplayName, post.userId, post.text, post.type)
+}
+
+export const createBookImagePost = (post) => {
+    return new BookImagePosts(post.commentsNum, post.dateCreated, post.id, post.userDisplayName, post.userId, post.imageUrl, post.type)
+}
+
+export const createBookVideoPost = (post) => {
+    return new BookVideoPosts(post.commentsNum, post.dateCreated, post.id, post.userDisplayName, post.userId, post.videoUrl, post.type)
+}
+
+export const createBookPosts = (posts, textCB, imageCB, videoCB) => {
+    return posts.map(post => {
+        if(post.type === 'text') {
+            return textCB(post)
+        } else if (post.type === 'image'){
+            return imageCB(post)
+        } else {
+            return videoCB(post)
+        }
     })
 }

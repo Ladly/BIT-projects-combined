@@ -7,10 +7,18 @@ import {
 import { GETOPTIONS } from './../utils/restOptions'
 import { CREATEOPTIONS } from './../utils/restOptions'
 
+import {
+    createBookPosts,
+    createBookTextPost,
+    createBookImagePost,
+    createBookVideoPost
+} from './../utils/helpers'
+
 class BookFeedServices {
     static fetchBookPosts = () => {
         return fetch(BOOK_GET_POSTS_URL, GETOPTIONS)
             .then(posts => posts.json())
+            .then(posts => createBookPosts(posts, createBookTextPost, createBookImagePost,createBookVideoPost))
     }
 
     static postTextData = (data) => {
