@@ -6,7 +6,9 @@ import {
     DISPLAY_TEXT_MODAL,
     HIDE_TEXT_MODAL,
     DISPLAY_IMAGE_MODAL,
-    HIDE_IMAGE_MODAL
+    HIDE_IMAGE_MODAL,
+    DISPLAY_VIDEO_MODAL,
+    HIDE_VIDEO_MODAL
 } from './constants'
 
 const initialState = {
@@ -15,7 +17,8 @@ const initialState = {
     fetchedBookShowsSuccess: false,
     fetchedBookShowsError: false,
     displayTextModal: false,
-    displayImageModal: false
+    displayImageModal: false,
+    displayVideoModal: false
 } 
 
 export const bookFeedReducer = (state = initialState, action) => {
@@ -64,6 +67,18 @@ export const bookFeedReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 displayImageModal: false
+            }
+            break
+        case DISPLAY_VIDEO_MODAL: 
+            return {
+                ...state,
+                displayVideoModal: true
+            }
+            break
+        case HIDE_VIDEO_MODAL: 
+            return {
+                ...state, 
+                displayVideoModal: false
             }
             break
         default: 

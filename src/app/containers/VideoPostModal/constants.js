@@ -1,0 +1,5 @@
+export const POST_VIDEO_DATA = 'videoPostModal/POST_VIDEO_DATA'
+
+export const POST_VIDEO_DATA_PENDING = 'videoPostModal/POST_VIDEO_DATA_PENDING'
+export const POST_VIDEO_DATA_FULFILLED = 'videoPostModal/POST_VIDEO_DATA_FULFILLED'
+export const POST_VIDEO_DATA_REJECTED = 'videoPostModal/POST_VIDEO_DATA_REJECTED'

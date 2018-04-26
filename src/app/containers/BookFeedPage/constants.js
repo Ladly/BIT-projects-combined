@@ -9,3 +9,6 @@ export const HIDE_TEXT_MODAL = "bookFeedPage/HIDE_TEXT_MODAL"
 
 export const DISPLAY_IMAGE_MODAL = "bookFeedPage/DISPLAY_IMAGE_MODAL"
 export const HIDE_IMAGE_MODAL = "bookFeedPage/HIDE_IMAGE_MODAL"
+
+export const DISPLAY_VIDEO_MODAL = "bookFeedPage/DISPLAY_VIDEO_MODAL"
+export const HIDE_VIDEO_MODAL = "bookFeedPage/HIDE_VIDEO_MODAL"
