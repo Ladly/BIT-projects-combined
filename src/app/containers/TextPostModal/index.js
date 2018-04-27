@@ -11,8 +11,8 @@ import { validateBookTextPost } from './../../../../utils/validations'
 import './style.scss'
 
 class TextPostModal extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state={
             value: "",
         }
@@ -30,6 +30,7 @@ class TextPostModal extends Component {
                         return <Loading /> 
                     } else if (this.props.postDataSuccess) {
                         this.clearAndHide()
+                        this.props.getBookPosts()
                     } else {
                         return <Error />
                     }
@@ -49,6 +50,7 @@ class TextPostModal extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className={this.hideModal()}>
                 <input type="text" className="form-control" placeholder="Add text post" onChange={this.handleChange} value={this.state.value}/>

@@ -30,6 +30,7 @@ class ImagePostModal extends Component {
                         return <Loading /> 
                     } else if (this.props.postDataSuccess) {
                         this.clearAndHide()
+                        this.props.getBookPosts()
                     } else {
                         return <Error />
                     }

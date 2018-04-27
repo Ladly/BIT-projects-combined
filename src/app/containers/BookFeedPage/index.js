@@ -31,11 +31,11 @@ class BookFeedPage extends Component {
     selectCard = (posts) => {
         return posts.map(post => {
             if(post.type === 'text'){
-                return <TextPostCard key={post.id} post={post}/>
+                return <TextPostCard key={post.id} post={post} />
             } else if(post.type === 'image') {
-                return <ImagePostCard key={post.id} post={post}/>
+                return <ImagePostCard key={post.id} post={post} />
             } else {
-                return <VideoPostCard key={post.id} post={post}/>
+                return <VideoPostCard key={post.id} post={post} />
             }
         })
     }
@@ -70,9 +70,9 @@ class BookFeedPage extends Component {
                     <button onClick={this.displayImgModal} className="btn btn-primary col-4">Add image post</button>
                     <button onClick={this.displayVidModal} className="btn btn-primary col-4">Add video post</button>
                 </div>
-                <TextPostModal display={this.props.textModal} hideModal={this.props.hideTextModal}/>
-                <ImagePostModal display={this.props.imageModal} hideModal={this.props.hideImageModal}/>
-                <VideoPostModal display={this.props.videoModal} hideModal={this.props.hideVideoModal}/>
+                <TextPostModal display={this.props.textModal} hideModal={this.props.hideTextModal} getBookPosts={this.props.getBookPosts}/>
+                <ImagePostModal display={this.props.imageModal} hideModal={this.props.hideImageModal} getBookPosts={this.props.getBookPosts}/>
+                <VideoPostModal display={this.props.videoModal} hideModal={this.props.hideVideoModal} getBookPosts={this.props.getBookPosts}/>
                 {this.displayPosts()}
             </div>
         )
