@@ -4,6 +4,7 @@ import {
     BOOK_POST_IMAGE_URL,
     BOOK_POST_VIDEO_URL
 } from './../utils/constants'
+
 import { GETOPTIONS } from './../utils/restOptions'
 import { CREATEOPTIONS } from './../utils/restOptions'
 
