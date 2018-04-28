@@ -12,6 +12,7 @@ import { Error } from './../../components/Error'
 import { TextPostDetails } from './../../components/TextPostDetails'
 import { ImagePostDetails } from './../../components/ImagePostDetails'
 import { VideoPostDetails } from './../../components/VideoPostDetails'
+import BookPostCommentInput from './../BookPostCommentInput'
 
 import './style.scss'
 
@@ -35,7 +36,6 @@ class BookPostDetails extends Component {
         if(this.props.textPostLoading || this.props.imagePostLoading || this.props.videoPostLoading) {
             return <Loading />
         } else if (this.props.textPostSuccess) {
-            console.log('here')
             return <TextPostDetails post={this.props.textPost}/>
         } else if (this.props.imagePostSuccess) {
             return <ImagePostDetails post={this.props.imagePost}/> 
@@ -50,6 +50,7 @@ class BookPostDetails extends Component {
         return (
             <div className="container">
                 {this.pickDisplayCard()}
+                <BookPostCommentInput postId={this.props.match.params.id} />
             </div>
         )
     }

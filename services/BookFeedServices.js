@@ -6,7 +6,7 @@ import {
 } from './../utils/constants'
 
 import { GETOPTIONS } from './../utils/restOptions'
-import { CREATEOPTIONS } from './../utils/restOptions'
+import { CREATEPOSTOPTIONS } from './../utils/restOptions'
 
 import {
     createBookPosts,
@@ -23,17 +23,17 @@ class BookFeedServices {
     }
 
     static postTextData = (data) => {
-        return fetch(BOOK_POST_TEXT_URL, CREATEOPTIONS({text: data}))
+        return fetch(BOOK_POST_TEXT_URL, CREATEPOSTOPTIONS({text: data}))
             .then(response => response.json())
     }
 
     static postImageData = (data) => {
-        return fetch(BOOK_POST_IMAGE_URL, CREATEOPTIONS({imageUrl: data}))
+        return fetch(BOOK_POST_IMAGE_URL, CREATEPOSTOPTIONS({imageUrl: data}))
             .then(response => response.json())
     }
 
     static postVideoData = (data) => {
-        return fetch(BOOK_POST_VIDEO_URL, CREATEOPTIONS({videoUrl: data}))
+        return fetch(BOOK_POST_VIDEO_URL, CREATEPOSTOPTIONS({videoUrl: data}))
             .then(response => response.json())
     }
 }

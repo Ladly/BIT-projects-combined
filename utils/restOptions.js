@@ -9,7 +9,7 @@ export const GETOPTIONS = {
     headers	
 }
 
-export const CREATEOPTIONS = (body) => {
+export const CREATEPOSTOPTIONS = (body) => {
 	return {
 		method: 'POST',
 		headers,

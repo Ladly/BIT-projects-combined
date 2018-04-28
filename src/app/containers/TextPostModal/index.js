@@ -50,7 +50,6 @@ class TextPostModal extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className={this.hideModal()}>
                 <input type="text" className="form-control" placeholder="Add text post" onChange={this.handleChange} value={this.state.value}/>

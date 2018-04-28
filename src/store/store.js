@@ -20,6 +20,7 @@ import { textPostModalReducer } from './../app/containers/TextPostModal/reducer'
 import { imagePostModalReducer } from './../app/containers/ImagePostModal/reducer'
 import { videoPostModalReducer } from './../app/containers/VideoPostModal/reducer'
 import { bookPostDetailsReducer } from './../app/containers/BookPostDetailsPage/reducer'
+import { bookPostCommentInputReducer } from './../app/containers/BookPostCommentInput/reducer'
 
 const rootReducer = combineReducers({
 	homepageReducer,
@@ -37,7 +38,8 @@ const rootReducer = combineReducers({
 	textPostModalReducer,
 	imagePostModalReducer,
 	videoPostModalReducer,
-	bookPostDetailsReducer
+	bookPostDetailsReducer,
+	bookPostCommentInputReducer
 })
 export { rootReducer }
 

@@ -10,3 +10,6 @@ export const BOOK_GET_POSTS_URL = "http://bitbookapi.azurewebsites.net/api/posts
 export const BOOK_POST_TEXT_URL = "http://bitbookapi.azurewebsites.net/api/TextPosts"
 export const BOOK_POST_IMAGE_URL = "http://bitbookapi.azurewebsites.net/api/ImagePosts"
 export const BOOK_POST_VIDEO_URL = "http://bitbookapi.azurewebsites.net/api/VideoPosts"
+
+export const BOOK_POST_POST_COMMENT_URL = "http://bitbookapi.azurewebsites.net/api/Comments"
+

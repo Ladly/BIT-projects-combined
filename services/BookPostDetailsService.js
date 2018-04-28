@@ -1,10 +1,14 @@
 import { 
     BOOK_POST_TEXT_URL,
     BOOK_POST_IMAGE_URL,
-    BOOK_POST_VIDEO_URL
+    BOOK_POST_VIDEO_URL,
+    BOOK_POST_POST_COMMENT_URL
 } from './../utils/constants'
 
-import { GETOPTIONS } from './../utils/restOptions'
+import { 
+    GETOPTIONS,
+    CREATEPOSTOPTIONS 
+} from './../utils/restOptions'
 import { 
     createBookTextPost,
     createBookImagePost,
@@ -29,6 +33,15 @@ class BookPostDetailsService {
         return fetch(`${BOOK_POST_VIDEO_URL}/${id}`, GETOPTIONS)
             .then(post => post.json())
             .then(post => createBookVideoPost(post))
+    }
+
+    static postCommentOnBookPost = (data, id) => {
+        console.log(data)
+        return fetch(BOOK_POST_POST_COMMENT_URL, CREATEPOSTOPTIONS({
+            body: data, 
+            postId: id
+        })) 
+            .then(response => response.json())
     }
 }
 
