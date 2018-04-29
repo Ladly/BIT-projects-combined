@@ -13,6 +13,7 @@ import { TextPostDetails } from './../../components/TextPostDetails'
 import { ImagePostDetails } from './../../components/ImagePostDetails'
 import { VideoPostDetails } from './../../components/VideoPostDetails'
 import BookPostCommentInput from './../BookPostCommentInput'
+import BookPostComments from './../BookPostComments'
 
 import './style.scss'
 
@@ -51,6 +52,7 @@ class BookPostDetails extends Component {
             <div className="container">
                 {this.pickDisplayCard()}
                 <BookPostCommentInput postId={this.props.match.params.id} />
+                <BookPostComments postId={this.props.match.params.id}/>
             </div>
         )
     }

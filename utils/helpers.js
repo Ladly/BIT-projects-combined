@@ -11,6 +11,7 @@ import { BlogPostAuthor } from './../entities/BlogPostAuthor'
 import { BookTextPosts } from './../entities/BookTextPosts'
 import { BookImagePosts } from './../entities/BookImagePosts'
 import { BookVideoPosts } from './../entities/BookVideoPosts'
+import { BookPostComments } from './../entities/BookPostComments'
 
 export const createShow = (showsArray) => {
     return showsArray.map(show => {
@@ -164,4 +165,10 @@ export const createBookPosts = (posts, textCB, imageCB, videoCB) => {
 
 export const bookVideoPostUrlToEmbed = (url) => {
     return url.replace('watch?v=', 'embed/')
+}
+
+export const createBookPostComments = (comments) => {
+    return comments.map(comment => {
+        return new BookPostComments(comment.id, comment.dateCreated, comment.body, comment.postId, comment.authorName, comment.authorId)
+    })
 }

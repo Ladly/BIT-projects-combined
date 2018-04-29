@@ -1,0 +1,4 @@
+export const FETCH_COMMENTS = "bookPostComments/FETCH_COMMENTS"
+export const FETCH_COMMENTS_PENDING = 'bookPostComments/FETCH_COMMENTS_PENDING'
+export const FETCH_COMMENTS_FULFILLED = 'bookPostComments/FETCH_COMMENTS_FULFILLED'
+export const FETCH_COMMENTS_REJECTED = 'bookPostComments/FETCH_COMMENTS_REJECTED'

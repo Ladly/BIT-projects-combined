@@ -22,9 +22,22 @@ class BookPostCommentInput extends Component {
 
     postData = () => {
         this.props.postData(this.state.value, this.props.postId)
+            .then(() => {
+                if (this.props.postDataSuccess) {
+                    this.clearInput()
+                } 
+        })
     }
 
-    clearinput = () => {        
+    displayNotation = () => {
+        if(this.props.postDataLoading) {
+            return <Loading />
+        } else if(this.props.postDataError){
+            return <Error />
+        }
+    }
+
+    clearInput = () => {        
         this.setState({value: ''})
     }
 
@@ -36,7 +49,8 @@ class BookPostCommentInput extends Component {
         return (
             <div className="input-holder">
                 <input type="text" className="form-control" placeholder="Add comment" onChange={this.handleChange} value={this.state.value}/>
-                <button disabled={this.disableButton()} onClick={this.postData} className="btn btn-primary float-right">Post comment</button>
+                <button disabled={this.disableButton()} onClick={this.postData} className="btn btn-primary btn-block">Post comment</button>
+                {this.displayNotation()}
             </div>
         )
     }
@@ -44,9 +58,9 @@ class BookPostCommentInput extends Component {
 
 const mapStateToProps = state => {
     return {
-        postDataLoading: state.textPostModalReducer.postDataLoading,
-        postDataSuccess: state.textPostModalReducer.postDataSuccess,
-        postDataError: state.textPostModalReducer.postDataError,
+        postDataLoading: state.bookPostCommentInputReducer.postDataLoading,
+        postDataSuccess: state.bookPostCommentInputReducer.postDataSuccess,
+        postDataError: state.bookPostCommentInputReducer.postDataError,
     }
 }
 
