@@ -13,6 +13,7 @@ import BlogAuthorsPage from './containers/BlogAuthorsPage'
 import BookFeedPage from './containers/BookFeedPage'
 import BookPostDetailsPage from './containers/BookPostDetailsPage'
 import BookProfilePage from './containers/BookProfilePage'
+import BookUsersPage from './containers/BookUsersPage'
 import { Footer } from './components/Footer'
 
 
@@ -33,6 +34,7 @@ export const App = () => {
                 <Route exact path="/bookfeed" component={BookFeedPage}/>
                 <Route exact path="/bookpostdetails/:type/:id" component={BookPostDetailsPage}/>
                 <Route exact path="/bookprofile" component={BookProfilePage}/>
+                <Route exact path="/bookusers" component={BookUsersPage}/>
             </Switch>
             <Footer />
         </Fragment>

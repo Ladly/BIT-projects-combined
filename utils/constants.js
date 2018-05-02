@@ -15,3 +15,5 @@ export const BOOK_POST_COMMENTS_URL = "http://bitbookapi.azurewebsites.net/api/C
 
 export const BOOK_PROFILE_URL = "http://bitbookapi.azurewebsites.net/api/profile"
 
+export const BOOK_USERS_URL = "http://bitbookapi.azurewebsites.net/api/users"
+

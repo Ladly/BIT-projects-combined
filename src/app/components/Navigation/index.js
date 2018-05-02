@@ -30,6 +30,9 @@ export const Navigation = () => {
                         <li className="nav-item">
                             <Link to="/bookprofile" className="nav-link">Book Profile</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/bookusers" className="nav-link">Book Users</Link>
+                        </li>
                     </ul>
                 </div>
                 <SearchInput />
