@@ -13,3 +13,5 @@ export const BOOK_POST_VIDEO_URL = "http://bitbookapi.azurewebsites.net/api/Vide
 
 export const BOOK_POST_COMMENTS_URL = "http://bitbookapi.azurewebsites.net/api/Comments" // url for both get and post is the same
 
+export const BOOK_PROFILE_URL = "http://bitbookapi.azurewebsites.net/api/profile"
+

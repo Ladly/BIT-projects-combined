@@ -27,6 +27,9 @@ export const Navigation = () => {
                         <li className="nav-item">
                             <Link to="/bookfeed" className="nav-link">Book Feed</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/bookprofile" className="nav-link">Book Profile</Link>
+                        </li>
                     </ul>
                 </div>
                 <SearchInput />

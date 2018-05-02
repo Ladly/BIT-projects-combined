@@ -12,6 +12,7 @@ import { BookTextPosts } from './../entities/BookTextPosts'
 import { BookImagePosts } from './../entities/BookImagePosts'
 import { BookVideoPosts } from './../entities/BookVideoPosts'
 import { BookPostComments } from './../entities/BookPostComments'
+import { BookProfile } from './../entities/BookProfile'
 
 export const createShow = (showsArray) => {
     return showsArray.map(show => {
@@ -171,4 +172,8 @@ export const createBookPostComments = (comments) => {
     return comments.map(comment => {
         return new BookPostComments(comment.id, comment.dateCreated, comment.body, comment.postId, comment.authorName, comment.authorId)
     })
+}
+
+export const createBookProfile = (profile) => {
+    return new BookProfile(profile.userId, profile.name, profile.email, profile.aboutShort, profile.about, profile.avatarUrl, profile.postsCount, profile.commentsCount)
 }

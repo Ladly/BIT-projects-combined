@@ -22,6 +22,7 @@ import { videoPostModalReducer } from './../app/containers/VideoPostModal/reduce
 import { bookPostDetailsReducer } from './../app/containers/BookPostDetailsPage/reducer'
 import { bookPostCommentInputReducer } from './../app/containers/BookPostCommentInput/reducer'
 import { bookPostCommentsReducer } from './../app/containers/BookPostComments/reducer'
+import { bookProfilePageReducer } from './../app/containers/BookProfilePage/reducer'
 
 const rootReducer = combineReducers({
 	homepageReducer,
@@ -41,7 +42,8 @@ const rootReducer = combineReducers({
 	videoPostModalReducer,
 	bookPostDetailsReducer,
 	bookPostCommentInputReducer,
-	bookPostCommentsReducer
+	bookPostCommentsReducer,
+	bookProfilePageReducer
 })
 export { rootReducer }
 

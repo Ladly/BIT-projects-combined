@@ -9,6 +9,7 @@ import {
     GETOPTIONS,
     CREATEPOSTOPTIONS 
 } from './../utils/restOptions'
+
 import { 
     createBookTextPost,
     createBookImagePost,
