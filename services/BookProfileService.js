@@ -1,4 +1,7 @@
-import { BOOK_PROFILE_URL } from './../utils/constants'
+import { 
+    BOOK_PROFILE_URL,
+    UPDATE_BOOK_PROFILE_URL
+} from './../utils/constants'
 
 import { 
     createBookProfile
@@ -6,6 +9,7 @@ import {
 
 import { 
     GETOPTIONS,
+    CREATEPUTOPTIONS
 } from './../utils/restOptions'
 
 class BookProfileService {
@@ -13,6 +17,10 @@ class BookProfileService {
         return fetch(BOOK_PROFILE_URL, GETOPTIONS)
             .then(profile => profile.json())
             .then(profile => createBookProfile(profile))
+    }
+
+    static updateProfile = (data) => {
+        return fetch(UPDATE_BOOK_PROFILE_URL, CREATEPUTOPTIONS(data))
     }
 }
 

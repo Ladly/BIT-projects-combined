@@ -1,14 +1,19 @@
 import { 
     FETCH_PROFILE_PENDING,
     FETCH_PROFILE_FULFILLED,
-    FETCH_PROFILE_REJECTED
+    FETCH_PROFILE_REJECTED,
+
+    DISPLAY_UPDATE_PROFILE_MODAL,
+    HIDE_UPDATE_PROFILE_MODAL
 } from './constants'
 
 const initialState = {
     fetchedProfile: null,
     fetchedProfileLoading: false,
     fetchedProfileSuccess: false,
-    fetchedProfileError: false
+    fetchedProfileError: false,
+
+    displayUpdateProfileModal: false,
 }
 
 export const bookProfilePageReducer = (state = initialState, action) => {
@@ -33,6 +38,19 @@ export const bookProfilePageReducer = (state = initialState, action) => {
                 fetchedProfileLoading: false,
                 fetchedProfileSuccess: false,
                 fetchedProfileError: true
+            }
+            break
+            
+        case DISPLAY_UPDATE_PROFILE_MODAL:
+            return {
+                ...state,
+                displayUpdateProfileModal: action.payload
+            }
+            break
+        case HIDE_UPDATE_PROFILE_MODAL:
+            return {
+                ...state,
+                displayUpdateProfileModal: action.payload
             }
             break
         default:

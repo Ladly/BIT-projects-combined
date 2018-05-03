@@ -16,3 +16,11 @@ export const CREATEPOSTOPTIONS = (body) => {
 		body: JSON.stringify(body)
 	}
 }
+
+export const CREATEPUTOPTIONS = (body) => {
+	return {
+		method: 'PUT',
+		headers,
+		body: JSON.stringify(body)
+	}
+}
