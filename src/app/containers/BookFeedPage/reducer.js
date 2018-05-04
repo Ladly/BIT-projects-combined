@@ -8,7 +8,12 @@ import {
     DISPLAY_IMAGE_MODAL,
     HIDE_IMAGE_MODAL,
     DISPLAY_VIDEO_MODAL,
-    HIDE_VIDEO_MODAL
+    HIDE_VIDEO_MODAL,
+
+    DISPLAY_ALL_POSTS,
+    DISPLAY_TEXT_POSTS,
+    DISPLAY_IMAGE_POSTS,
+    DISPLAY_VIDEO_POSTS
 } from './constants'
 
 const initialState = {
@@ -16,9 +21,12 @@ const initialState = {
     fetchedBookPostsLoading: false,
     fetchedBookPostsSuccess: false,
     fetchedBookPostsError: false,
+
     displayTextModal: false,
     displayImageModal: false,
-    displayVideoModal: false
+    displayVideoModal: false,
+
+    displayPostsOfType: "displayAllPosts"
 } 
 
 export const bookFeedReducer = (state = initialState, action) => {
@@ -44,6 +52,8 @@ export const bookFeedReducer = (state = initialState, action) => {
                 fetchedBookPostsSuccess: false,
                 fetchedBookPostsError: true
             }
+            break
+
         case DISPLAY_TEXT_MODAL: 
             return {
                 ...state,
@@ -79,6 +89,31 @@ export const bookFeedReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 displayVideoModal: false
+            }
+            break
+
+        case DISPLAY_ALL_POSTS: 
+            return {
+                ...state, 
+                displayPostsOfType: action.payload
+            }
+            break
+        case DISPLAY_TEXT_POSTS: 
+            return {
+                ...state, 
+                displayPostsOfType: action.payload
+            }
+            break
+        case DISPLAY_IMAGE_POSTS: 
+            return {
+                ...state, 
+                displayPostsOfType: action.payload
+            }
+            break
+        case DISPLAY_VIDEO_POSTS: 
+            return {
+                ...state, 
+                displayPostsOfType: action.payload
             }
             break
         default: 

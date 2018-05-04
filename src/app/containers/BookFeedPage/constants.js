@@ -12,3 +12,8 @@ export const HIDE_IMAGE_MODAL = "bookFeedPage/HIDE_IMAGE_MODAL"
 
 export const DISPLAY_VIDEO_MODAL = "bookFeedPage/DISPLAY_VIDEO_MODAL"
 export const HIDE_VIDEO_MODAL = "bookFeedPage/HIDE_VIDEO_MODAL"
+
+export const DISPLAY_ALL_POSTS = "bookFeedPage/DISPLAY_ALL_POSTS"
+export const DISPLAY_TEXT_POSTS = "bookFeedPage/DISPLAY_TEXT_POSTS"
+export const DISPLAY_IMAGE_POSTS = "bookFeedPage/DISPLAY_IMAGE_POSTS"
+export const DISPLAY_VIDEO_POSTS = "bookFeedPage/DISPLAY_VIDEO_POSTS"
