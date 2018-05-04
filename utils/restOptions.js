@@ -24,3 +24,8 @@ export const CREATEPUTOPTIONS = (body) => {
 		body: JSON.stringify(body)
 	}
 }
+
+export const DELETEOPTIONS = {
+	method: 'DELETE',
+	headers
+}

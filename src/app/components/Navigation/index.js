@@ -9,7 +9,7 @@ export const Navigation = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
-                <Link to="/" className="navbar-brand">BitShow</Link> 
+                <Link to="/" className="navbar-brand">BitCombined</Link> 
                 <div id="navbarNav"> 
                     <ul className="navbar-nav">
                         <li className="nav-item active">

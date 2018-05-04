@@ -2,11 +2,16 @@ import {
     BOOK_GET_POSTS_URL,
     BOOK_POST_TEXT_URL,
     BOOK_POST_IMAGE_URL,
-    BOOK_POST_VIDEO_URL
+    BOOK_POST_VIDEO_URL,
+    BOOK_DELETE_POSTS_URL
 } from './../utils/constants'
 
-import { GETOPTIONS } from './../utils/restOptions'
-import { CREATEPOSTOPTIONS } from './../utils/restOptions'
+import { 
+    GETOPTIONS,
+    CREATEPOSTOPTIONS, 
+    DELETEOPTIONS 
+} from './../utils/restOptions'
+
 
 import {
     createBookPosts,
@@ -36,7 +41,11 @@ class BookFeedServices {
         return fetch(BOOK_POST_VIDEO_URL, CREATEPOSTOPTIONS({videoUrl: data}))
             .then(response => response.json())
     }
-}
 
+    static deleteBookPost = (id) => {
+        return fetch(`${BOOK_DELETE_POSTS_URL}/${id}`, DELETEOPTIONS)
+            .then(res => console.log(res))
+    }
+}
 
 export { BookFeedServices }

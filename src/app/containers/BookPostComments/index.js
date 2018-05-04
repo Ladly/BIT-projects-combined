@@ -30,7 +30,6 @@ class BookPostComments extends Component {
     }
 
     render() {
-        console.log(this.props.comments)
         return (
             <div className="container">
                 {this.displayComments()}

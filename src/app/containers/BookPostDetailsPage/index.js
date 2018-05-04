@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 import { 
     fetchBookTextPost,
     fetchBookImagePost,
     fetchBookVideoPost,
+    fetchCurrentUser,
+    deletePost
  } from './actions'
 
 import { Loading } from './../../components/Loading'
@@ -21,6 +23,7 @@ class BookPostDetails extends Component {
 
     componentDidMount() {
         this.testTypeForFetch(this.props.match.params.type, this.props.match.params.id)
+        this.props.getCurrentUser()
     }
 
     testTypeForFetch = (type, id) => {
@@ -31,17 +34,57 @@ class BookPostDetails extends Component {
         } else if (type === "video") {
             this.props.getBookVideoPost(id)
         }
+    }     
+
+    testDeleteResults = () => {
+        if(this.props.deletedPostLoading) {
+            return <Loading />
+        } else if(this.props.deletedPostError){
+            return <Error />
+        }
+    }
+
+    deletePost = (id) => {
+        this.props.deletePost(id)
+            .then(() => this.props.history.push('/bookfeed'))
     }
 
     pickDisplayCard = () => {
-        if(this.props.textPostLoading || this.props.imagePostLoading || this.props.videoPostLoading) {
+        if(this.props.textPostLoading || this.props.imagePostLoading || this.props.videoPostLoading || this.props.currentUserLoading) {
             return <Loading />
-        } else if (this.props.textPostSuccess) {
-            return <TextPostDetails post={this.props.textPost}/>
-        } else if (this.props.imagePostSuccess) {
-            return <ImagePostDetails post={this.props.imagePost}/> 
-        } else if (this.props.videoPostSuccess) {
-            return <VideoPostDetails post={this.props.videoPost}/> 
+        } else if (this.props.textPostSuccess && this.props.currentUserSuccess) {
+            return (
+                <Fragment>
+                    <TextPostDetails 
+                        post={this.props.textPost} 
+                        currentUserId={this.props.currentUser.userId} 
+                        deletePost={this.deletePost}
+                    />
+                    {this.testDeleteResults()}
+                </Fragment>
+            )
+        } else if (this.props.imagePostSuccess && this.props.currentUserSuccess) {
+            return (
+                <Fragment>
+                    <ImagePostDetails 
+                        post={this.props.imagePost} 
+                        currentUserId={this.props.currentUser.userId} 
+                        deletePost={this.deletePost}
+                    />
+                     {this.testDeleteResults()}
+                </Fragment>
+            ) 
+        } else if (this.props.videoPostSuccess && this.props.currentUserSuccess) {
+            return (
+                <Fragment>
+                    <VideoPostDetails 
+                        post={this.props.videoPost} 
+                        currentUserId={this.props.currentUser.userId} 
+                        deletePost={this.deletePost}
+                    />
+                     {this.testDeleteResults()}
+                </Fragment>
+            ) 
         } else {
             return <Error />
         }
@@ -60,21 +103,30 @@ class BookPostDetails extends Component {
 
 const mapStateToProps = state => {
     return {
-        textPost: state.bookPostDetailsReducer.fetchedBookTextPost,
-        textPostLoading: state.bookPostDetailsReducer.fetchedBookTextPostLoading,
-        textPostSuccess: state.bookPostDetailsReducer.fetchedBookTextPostSuccess,
-        textPostError: state.bookPostDetailsReducer.fetchedBookTextPostError,
+            textPost: state.bookPostDetailsReducer.fetchedBookTextPost,
+            textPostLoading: state.bookPostDetailsReducer.fetchedBookTextPostLoading,
+            textPostSuccess: state.bookPostDetailsReducer.fetchedBookTextPostSuccess,
+            textPostError: state.bookPostDetailsReducer.fetchedBookTextPostError,
 
-        imagePost: state.bookPostDetailsReducer.fetchedBookImagePost,
-        imagePostLoading: state.bookPostDetailsReducer.fetchedBookImagePostLoading,
-        imagePostSuccess: state.bookPostDetailsReducer.fetchedBookImagePostSuccess,
-        imagePostError: state.bookPostDetailsReducer.fetchedBookImagePostError,
+            imagePost: state.bookPostDetailsReducer.fetchedBookImagePost,
+            imagePostLoading: state.bookPostDetailsReducer.fetchedBookImagePostLoading,
+            imagePostSuccess: state.bookPostDetailsReducer.fetchedBookImagePostSuccess,
+            imagePostError: state.bookPostDetailsReducer.fetchedBookImagePostError,
 
-        videoPost: state.bookPostDetailsReducer.fetchedBookVideoPost,
-        videoPostLoading: state.bookPostDetailsReducer.fetchedBookVideoPostLoading,
-        videoPostSuccess: state.bookPostDetailsReducer.fetchedBookVideoPostSuccess,
-        videoPostError: state.bookPostDetailsReducer.fetchedBookVideoPostError,
-
+            videoPost: state.bookPostDetailsReducer.fetchedBookVideoPost,
+            videoPostLoading: state.bookPostDetailsReducer.fetchedBookVideoPostLoading,
+            videoPostSuccess: state.bookPostDetailsReducer.fetchedBookVideoPostSuccess,
+            videoPostError: state.bookPostDetailsReducer.fetchedBookVideoPostError,
+            
+            currentUser: state.bookPostDetailsReducer.fetchedCurrentUser,
+            currentUserLoading: state.bookPostDetailsReducer.fetchedCurrentUserLoading,
+            currentUserSuccess: state.bookPostDetailsReducer.fetchedCurrentUserSuccess,
+            currentUserError: state.bookPostDetailsReducer.fetchedCurrentUserError,
+            
+            deletedPost: state.bookPostDetailsReducer.deletedPost,
+            deletedPostLoading: state.bookPostDetailsReducer.deletedPostLoading,
+            deletedPostSuccess: state.bookPostDetailsReducer.deletedPostSuccess,
+            deletedPostError: state.bookPostDetailsReducer.deletedPostError,
         }
 }
 
@@ -83,6 +135,8 @@ const mapDispatchToProps = dispatch => {
         getBookTextPosts: id => dispatch(fetchBookTextPost(id)),
         getBookImagePost: id => dispatch(fetchBookImagePost(id)),
         getBookVideoPost: id => dispatch(fetchBookVideoPost(id)),
+        getCurrentUser: () => dispatch(fetchCurrentUser()),
+        deletePost: id => dispatch(deletePost(id)),
     }
 }
 
