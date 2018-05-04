@@ -1,11 +1,14 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 
 import './style.scss'
 
 export const BookUserCard = ({bookUser}) => {
     return (
         <div className="book-user-card-holder">
-            <img src={bookUser.avatarUrl} alt="avatar image"/>
+            <Link to={`bookuserdetails/${bookUser.id}`}>
+                <img src={bookUser.avatarUrl} alt="avatar image"/>
+            </Link>
             <div className="book-user-card-first">
                 <div className="book-user-card-details">
                     <h3>{bookUser.name}</h3>

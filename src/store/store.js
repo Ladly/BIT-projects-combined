@@ -25,6 +25,7 @@ import { bookPostCommentsReducer } from './../app/containers/BookPostComments/re
 import { bookProfilePageReducer } from './../app/containers/BookProfilePage/reducer'
 import { bookUsersPageReducer } from './../app/containers/BookUsersPage/reducer'
 import { bookProfileUpdateModalReducer } from './../app/containers/BookProfileUpdateModal/reducer'
+import { bookUsersDetailsPageReducer } from './../app/containers/BookUsersDetailsPage/reducer'
 
 const rootReducer = combineReducers({
 	homepageReducer,
@@ -47,7 +48,8 @@ const rootReducer = combineReducers({
 	bookPostCommentsReducer,
 	bookProfilePageReducer,
 	bookUsersPageReducer,
-	bookProfileUpdateModalReducer
+	bookProfileUpdateModalReducer,
+	bookUsersDetailsPageReducer
 })
 export { rootReducer }
 

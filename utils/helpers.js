@@ -180,7 +180,9 @@ export const createBookProfile = (profile) => {
 }
 
 export const createBookUsers = (users) => {
-    return users.map(user => {
-        return new BookUsers(user.id, user.name, user.aboutShort, user.lastPostDate, user.avatarUrl)
-    })
+    return users.map(user => createBookSingleUserProfile(user))
+}
+
+export const createBookSingleUserProfile = (user) => {
+    return new BookUsers(user.id, user.name, user.aboutShort, user.lastPostDate, user.avatarUrl)
 }
