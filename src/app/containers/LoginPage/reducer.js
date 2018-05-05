@@ -4,7 +4,11 @@ import {
 
     REGISTER_USER_PENDING,
     REGISTER_USER_FULFILLED,
-    REGISTER_USER_REJECTED
+    REGISTER_USER_REJECTED,
+
+    USER_LOGIN_PENDING,
+    USER_LOGIN_FULFILLED,
+    USER_LOGIN_REJECTED
 } from './constants'
 
 const initialState = {
@@ -15,6 +19,11 @@ const initialState = {
     registeredUserLoading: false,
     registeredUserSuccess: false,
     registeredUserError: false,
+
+    userLoggedIn: null,
+    userLoggedInLoading: false,
+    userLoggedInSuccess: false,
+    userLoggedInError: false,
 } 
 
 export const loginPageReducer = (state = initialState, action) => {
@@ -54,6 +63,29 @@ export const loginPageReducer = (state = initialState, action) => {
                 registeredUserLoading: false,
                 registeredUserSuccess: false,
                 registeredUserError: true,
+            }
+            break
+
+            case USER_LOGIN_PENDING:
+            return {
+                ...state, 
+                userLoggedInLoading: true
+            }
+            break
+        case USER_LOGIN_FULFILLED:
+            return {
+                ...state, 
+                userLoggedInLoading: false,
+                userLoggedInSuccess: true,
+                userLoggedIn: action.payload
+            }
+            break
+        case USER_LOGIN_REJECTED:
+            return {
+                ...state, 
+                userLoggedInLoading: false,
+                userLoggedInSuccess: false,
+                userLoggedInError: true,
             }
             break
         default: 

@@ -1,7 +1,8 @@
 import {
     DISPLAY_LOGIN,
     DISPLAY_REGISTER,
-    REGISTER_USER
+    REGISTER_USER,
+    USER_LOGIN
 } from './constants'
 
 import { LoginService } from './../../../../services/LoginService'
@@ -22,5 +23,12 @@ export const registerNewUser = data => {
     return {
         type: REGISTER_USER,
         payload: LoginService.registerNewUser(data)
+    }
+}
+
+export const userLogin = data => {
+    return {    
+        type: USER_LOGIN,
+        payload: LoginService.userLogin(data)
     }
 }

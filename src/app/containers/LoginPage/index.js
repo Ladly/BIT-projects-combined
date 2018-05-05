@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { 
     displayLogin,
     displayRegister,
-    registerNewUser
+    registerNewUser,
+    userLogin
 } from './actions'
 
 import './style.scss'
@@ -25,7 +26,7 @@ class LoginPage extends Component {
     }
 
     pickComponentToRender = () => {
-        return this.props.displayLogin ? <Login /> : <Register registerUser={this.props.registerNewUser}/>
+        return this.props.displayLogin ? <Login userLogin={this.props.loginUser}/> : <Register registerUser={this.props.registerNewUser}/>
     } 
 
     render() {  
@@ -54,6 +55,16 @@ const mapStateToProps = state => {
 return {
         displayLogin: state.loginPageReducer.displayLogin,
         displayRegister: state.loginPageReducer.displayRegister,
+        
+        userRegistered: state.loginPageReducer.registeredUser,
+        userRegisteredLoading: state.loginPageReducer.registeredUserLoading,
+        userRegisteredSuccess: state.loginPageReducer.registeredUserSuccess,
+        userRegisteredError: state.loginPageReducer.registeredUserError,
+        
+        loggedInUser: state.loginPageReducer.userLoggedIn,
+        loggedInUserLoading: state.loginPageReducer.userLoggedInLoading,
+        loggedInUserSuccess: state.loginPageReducer.userLoggedInSuccess,
+        loggedInUserError: state.loginPageReducer.userLoggedInError,
     }
 }
 
@@ -62,6 +73,7 @@ return {
         displayLoginAction: () => dispatch(displayLogin()),
         displayRegisterAction: () => dispatch(displayRegister()),
         registerNewUser: data => dispatch(registerNewUser(data)),
+        loginUser: data => dispatch(userLogin(data)),
     }
 }
 

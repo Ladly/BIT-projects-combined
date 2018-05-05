@@ -8,13 +8,35 @@ import { Error } from './../../components/Error'
 
 class Login extends Component {
 
+    state = {
+        usernameValue: "",
+        passwordValue: ""
+    }
+
+    createBody = () => {
+        const body = {
+            username: this.state.usernameValue,
+            password: this.state.passwordValue
+        }
+
+        return body
+    }
+
+    handleChange = e => {
+        if(e.target.name === 'username') {
+            this.setState({usernameValue: e.target.value})
+        } else if(e. target.name === 'password') {
+            this.setState({passwordValue: e.target.value})
+        }
+    }
+
     render() {  
         return (
             <div className="login-component">
-                <input onChange={this.handleChange} type="text" className="form-control" placeholder="Username"/>
-                <input onChange={this.handleChange} type="password" className="form-control" placeholder="Password"/>
+                <input onChange={this.handleChange} value={this.state.usernameValue} type="text" className="form-control" placeholder="Username" name="username" />
+                <input onChange={this.handleChange} value={this.state.passwordValue} type="password" className="form-control" placeholder="Password" name="password" />
                 <hr />
-                <button className="btn btn-primary btn-block">Login</button>
+                <button onClick={() => this.props.userLogin(this.createBody())} className="btn btn-primary btn-block">Login</button>
             </div>
         )
     }

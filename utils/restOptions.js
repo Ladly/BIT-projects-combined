@@ -29,3 +29,4 @@ export const DELETEOPTIONS = {
 	method: 'DELETE',
 	headers
 }
+
