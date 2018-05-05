@@ -26,6 +26,7 @@ export const searchInputReducer = (state = initialState, action) => {
                 searchShowSuccess: true,
                 searchShows: action.payload
             }
+            break
         case SEARCH_SHOWS_REJECTED: 
             return {
                 ...state, 

@@ -26,6 +26,7 @@ import { bookProfilePageReducer } from './../app/containers/BookProfilePage/redu
 import { bookUsersPageReducer } from './../app/containers/BookUsersPage/reducer'
 import { bookProfileUpdateModalReducer } from './../app/containers/BookProfileUpdateModal/reducer'
 import { bookUsersDetailsPageReducer } from './../app/containers/BookUsersDetailsPage/reducer'
+import { loginPageReducer } from './../app/containers/LoginPage/reducer'
 
 const rootReducer = combineReducers({
 	homepageReducer,
@@ -49,7 +50,8 @@ const rootReducer = combineReducers({
 	bookProfilePageReducer,
 	bookUsersPageReducer,
 	bookProfileUpdateModalReducer,
-	bookUsersDetailsPageReducer
+	bookUsersDetailsPageReducer,
+	loginPageReducer
 })
 export { rootReducer }
 
