@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 import { 
     displayLogin,
-    displayRegister
+    displayRegister,
+    registerNewUser
 } from './actions'
 
 import './style.scss'
@@ -24,9 +25,8 @@ class LoginPage extends Component {
     }
 
     pickComponentToRender = () => {
-        return this.props.displayLogin ? <Login /> : <Register />
+        return this.props.displayLogin ? <Login /> : <Register registerUser={this.props.registerNewUser}/>
     } 
-
 
     render() {  
         return (
@@ -61,6 +61,7 @@ const mapDispatchToProps = dispatch => {
 return {
         displayLoginAction: () => dispatch(displayLogin()),
         displayRegisterAction: () => dispatch(displayRegister()),
+        registerNewUser: data => dispatch(registerNewUser(data)),
     }
 }
 

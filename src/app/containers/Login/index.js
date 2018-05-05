@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import connect from 'react-redux'
 
 import './style.scss'
 
@@ -20,21 +20,5 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    const showDetails = state.showDetailsReducer
-return {
-        showDetailsLoading: showDetails.fetchedShowDetailsLoading,
-        showDetailsSuccess: showDetails.fetchedShowDetailsSuccess,
-        showDetailsError: showDetails.fetchedShowDetailsError,
-        showDetails: showDetails.showDetailsAndCast,
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-return {
-        detailsAndCast: query => dispatch(fetchShowDetailsAndCast(query)),
-
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default Login

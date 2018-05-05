@@ -19,3 +19,4 @@ export const UPDATE_BOOK_PROFILE_URL = "http://bitbookapi.azurewebsites.net/api/
 
 export const BOOK_USERS_URL = "http://bitbookapi.azurewebsites.net/api/users"
 
+export const USER_REGISTRATION_URL = "http://bitbookapi.azurewebsites.net/api/register"
