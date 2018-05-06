@@ -3,27 +3,11 @@ import {
     USER_LOGIN_URL
 } from './../utils/constants'
 
-export const createUser = (body) => {
-    return {
-        method: 'POST',
-        headers : {
-            'Content-Type': 'application/json',
-            'Key': '64C82EE',
-        },
-        body: JSON.stringify(body)
-    }
-}
+import { 
+    createUser,
+    loginUser 
+} from './../utils/restOptions'
 
-export const loginUser = (body) => {
-    return {
-        method: 'POST',
-        headers : {
-            'Content-Type': 'application/json',
-            'Key': '64C82EE',
-        },
-        body: JSON.stringify(body)
-    }
-}
 
 class LoginService {
 
@@ -33,7 +17,6 @@ class LoginService {
     }
 
     static userLogin = (data) => {
-        console.log(data)
         return fetch(USER_LOGIN_URL, loginUser(data))
             .then(response => response.json())
     }

@@ -15,6 +15,8 @@ import { Error } from './../../components/Error'
 import Login from './../Login'
 import Register from './../Register'
 
+import { LocalStorageService } from './../../../../services/LocalStorageService'
+
 class LoginPage extends Component {
 
     activeLoginNavClass = () => {
@@ -26,8 +28,18 @@ class LoginPage extends Component {
     }
 
     pickComponentToRender = () => {
-        return this.props.displayLogin ? <Login userLogin={this.props.loginUser}/> : <Register registerUser={this.props.registerNewUser}/>
+        return this.props.displayLogin ?
+         <Login userLogin={this.props.loginUser} 
+         addSessionIdToSessionStorage={this.addSessionIdToSessionStorage}
+         /> : 
+         <Register registerUser={this.props.registerNewUser}/>
     } 
+
+    addSessionIdToSessionStorage = () => {
+        if(this.props.loggedInUserSuccess) {
+            LocalStorageService.setItemToSessionStorage('sessionId',this.props.loggedInUser.sessionId)
+        }
+    }
 
     render() {  
         return (

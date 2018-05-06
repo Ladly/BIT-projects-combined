@@ -7,6 +7,11 @@ class LocalStorageService {
     static getItemFromLocalStorage = (key) => {
         return JSON.parse(localStorage.getItem(key))
     }
+
+    static setItemToSessionStorage = (key, value) => {
+        sessionStorage.setItem(key, value);
+    }
+
 }
 
 export { LocalStorageService }
