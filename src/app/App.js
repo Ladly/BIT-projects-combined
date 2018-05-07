@@ -18,6 +18,8 @@ import BookUsersDetailsPage from './containers/BookUsersDetailsPage'
 import LoginPage from './containers/LoginPage'
 import { Footer } from './components/Footer'
 
+import { ExtendedLogin } from './HOC/ExtendedLogin'
+
 
 export const App = () => {
     
@@ -25,7 +27,8 @@ export const App = () => {
         <Fragment>
             <Navigation />
             <Switch>
-                <Route exact path="/" component={Homepage}/>
+                <Route exact path="/" component={ExtendedLogin(Homepage)}/>
+                <Route exact path="/homepage" component={Homepage}/>
                 <Route exact path="/details/:id" component={ShowDetailsPage}/>
                 <Route exact path="/comments/:id" component={CommentsPage}/>
                 <Route exact path="/showusers" component={ShowUsersPage}/>

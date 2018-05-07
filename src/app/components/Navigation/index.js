@@ -12,8 +12,8 @@ export const Navigation = () => {
                 <Link to="/" className="navbar-brand">BitCombined</Link> 
                 <div id="navbarNav"> 
                     <ul className="navbar-nav">
-                        <li className="nav-item active">
-                            <Link to="/" className="nav-link">Home</Link>
+                        <li className="nav-item">
+                            <Link to="/homepage" className="nav-link">Home</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/showusers" className="nav-link">Show users</Link>

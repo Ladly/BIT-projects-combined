@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { 
     displayLogin,
@@ -31,6 +32,7 @@ class LoginPage extends Component {
         return this.props.displayLogin ?
          <Login userLogin={this.props.loginUser} 
          addSessionIdToSessionStorage={this.addSessionIdToSessionStorage}
+         goToHomePage={this.goToHomePage}
          /> : 
          <Register registerUser={this.props.registerNewUser}/>
     } 
@@ -41,7 +43,12 @@ class LoginPage extends Component {
         }
     }
 
-    render() {  
+    goToHomePage = () => {
+        this.props.history.push('/homepage')
+    }
+
+    render() { 
+        console.log(this.props) 
         return (
             <div className="container">
                 <div className="login-holder col-sm-8 offset-sm-1">
@@ -89,4 +96,4 @@ return {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginPage))

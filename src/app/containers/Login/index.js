@@ -32,7 +32,11 @@ class Login extends Component {
 
     postData = () => {
         this.props.userLogin(this.createBody())
-            .then(() => this.props.addSessionIdToSessionStorage())
+            .then(() => {
+                this.props.goToHomePage()
+                this.props.addSessionIdToSessionStorage()
+            
+            })
     }
 
     render() {  
