@@ -5,7 +5,7 @@ import LoginPage from './../../containers/LoginPage'
 export const ExtendedLogin = (ComponentToRender) => {
     return class ExtendedLogin extends Component {
 
-        testStorage = () => {
+        testAuth = () => {
             console.log()
             if(sessionStorage.getItem('sessionId') === null) {
                 return <LoginPage />
@@ -18,7 +18,7 @@ export const ExtendedLogin = (ComponentToRender) => {
         render () {
             return (
                     <React.Fragment>
-                       {this.testStorage()}
+                       {this.testAuth()}
                     </React.Fragment>
                  )
         }

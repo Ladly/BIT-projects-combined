@@ -48,7 +48,6 @@ class LoginPage extends Component {
     }
 
     render() { 
-        console.log(this.props) 
         return (
             <div className="container">
                 <div className="login-holder col-sm-8 offset-sm-1">
