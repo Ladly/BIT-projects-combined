@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { 
@@ -57,17 +58,25 @@ class BlogPostAuthorDetailsPage extends Component {
 
 const mapStateToProps = state => {
 	return {
-			authorDetails: state.blogPostAuthorDetailReducer.fetchedAuthor,
-			authorLoadingDetails: state.blogPostAuthorDetailReducer.fetchedAuthorLoading,
-			authorSuccessDetails: state.blogPostAuthorDetailReducer.fetchedAuthorSuccess,
-			authorErrorDetails: state.blogPostAuthorDetailReducer.fetchedAuthorError 
-		}
+		authorDetails: state.blogPostAuthorDetailReducer.fetchedAuthor,
+		authorLoadingDetails: state.blogPostAuthorDetailReducer.fetchedAuthorLoading,
+		authorSuccessDetails: state.blogPostAuthorDetailReducer.fetchedAuthorSuccess,
+		authorErrorDetails: state.blogPostAuthorDetailReducer.fetchedAuthorError 
+	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
 		getAuthor: (id) => dispatch(fetchAuthor(id)),
-		}
+	}
+}
+
+BlogPostAuthorDetailsPage.propTypes = {
+	getAuthor: PropTypes.func,
+	match: PropTypes.object,
+	authorLoadingDetails: PropTypes.bool,
+	authorSuccessDetails: PropTypes.bool,
+	authorDetails: PropTypes.object,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlogPostAuthorDetailsPage)

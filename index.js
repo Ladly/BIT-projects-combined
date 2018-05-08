@@ -3,7 +3,7 @@ import React from 'react'
 import { render } from 'react-dom'
 
 import { store } from './src/store/store'
-import { HashRouter } from "react-router-dom";
+import { HashRouter } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
 import { rootReducer } from './src/store/store'
@@ -17,4 +17,4 @@ render(
 		</HashRouter>
 	</Provider>,
 	document.getElementById('root')
-	);
+)

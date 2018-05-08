@@ -1,6 +1,6 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpack = require ('webpack')
 
 module.exports = {
@@ -9,14 +9,14 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'webpack.bundle.js'
 	},
-		devServer: {
-				contentBase: path.join(__dirname, 'dist'),
-				hot: true,
-				open: true,
-				inline: true,
-				stats: 'errors-only'
+	devServer: {
+		contentBase: path.join(__dirname, 'dist'),
+		hot: true,
+		open: true,
+		inline: true,
+		stats: 'errors-only'
 
-		},
+	},
 	module: {
 		rules: [
 			{
@@ -26,12 +26,13 @@ module.exports = {
 			{ 
 				test: /\.js$/, 
 				exclude: /node_modules/, 
-				loader: "babel-loader" },
+				loader: ['babel-loader', 'eslint-loader'] 
+			},
 			{
 				test: /\.html$/,
 				use: [
 					{
-						loader: "html-loader",
+						loader: 'html-loader',
 						options: { minimize: true }
 					}
 				]
@@ -39,11 +40,11 @@ module.exports = {
 			{
 				test: /\.(gif|png|jpe?g|svg)$/i,
 				use: [
-						{
+					{
 						loader: 'file-loader',
 						options: {
-						name: '[path][hash:6].[ext]',
-						outputPath: ''
+							name: '[path][hash:6].[ext]',
+							outputPath: ''
 						}
 					},
 				  	
@@ -55,18 +56,18 @@ module.exports = {
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin(),
 		new HtmlWebpackPlugin({
-				title: 'webpack-boilerplate',
-				template: './public/index.html',
-				hash: true,
-				minify: {
-					collapseWhitespace: true
-				}
-			}),
+			title: 'webpack-boilerplate',
+			template: './public/index.html',
+			hash: true,
+			minify: {
+				collapseWhitespace: true
+			}
+		}),
 		new ExtractTextPlugin({
-				filename: 'style.css',
-				allChunks: true,
-				disable: true
+			filename: 'style.css',
+			allChunks: true,
+			disable: true
 		})
 	]
-};
+}
 

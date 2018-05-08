@@ -1,4 +1,4 @@
-export const FETCH_PROFILE = "bookProfilePage/FETCH_PROFILE"
+export const FETCH_PROFILE = 'bookProfilePage/FETCH_PROFILE'
 export const FETCH_PROFILE_PENDING = 'bookProfilePage/FETCH_PROFILE_PENDING'
 export const FETCH_PROFILE_FULFILLED = 'bookProfilePage/FETCH_PROFILE_FULFILLED'
 export const FETCH_PROFILE_REJECTED = 'bookProfilePage/FETCH_PROFILE_REJECTED'

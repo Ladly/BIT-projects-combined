@@ -1,24 +1,28 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import './style.scss'
 
 export const SearchList = ({shows, value}) => {
 
+	const displayListItem = () => {
+		if(value === '') {
+			shows = []
+		}
+		return shows.map(show => {
+			return <Link key={show.id} to={`/details/${show.id}`}><li className="search-list-item">{show.name}</li></Link>
+		})
+	}
 
-    const displayListItem = () => {
-        if(value === "") {
-            shows = []
-        }
-        return shows.map(show => {
-            return <Link key={show.id} to={`/details/${show.id}`}><li className="search-list-item">{show.name}</li></Link>
-        })
-    }
+	return (
+		<ul className="search-list">
+		   {displayListItem()}
+		</ul>
+	)
+}
 
-    return (
-        <ul className="search-list">
-           {displayListItem()}
-        </ul>
-    )
+SearchList.propTypes = {
+	shows: PropTypes.object,
+	value: PropTypes.string,
 }

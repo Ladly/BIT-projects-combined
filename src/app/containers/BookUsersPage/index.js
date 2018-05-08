@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-
 
 import { fetchUsers } from './actions'
 
@@ -12,44 +12,51 @@ import './style.scss'
 
 class BookUsersPage extends Component {
 
-    componentDidMount() {
-        this.props.getUsers()
-    }
+	componentDidMount() {
+		this.props.getUsers()
+	}
 
-    displayUsers = () => {
-        if(this.props.bookUsersLoading) {
-            return <Loading />
-        } else if (this.props.bookUsersSuccess) {
-            return this.props.bookUsers.map(bookUser => {
-                return <BookUserCard key={bookUser.id} bookUser={bookUser}/>
-            })
-        } else {
-            <Error />
-        }
-    }
+	displayUsers = () => {
+		if(this.props.bookUsersLoading) {
+			return <Loading />
+		} else if (this.props.bookUsersSuccess) {
+			return this.props.bookUsers.map(bookUser => {
+				return <BookUserCard key={bookUser.id} bookUser={bookUser}/>
+			})
+		} else {
+			<Error />
+		}
+	}
 
-    render() {
-        return (
-            <div className="container">
-                {this.displayUsers()}
-            </div>
-        )
-    }
+	render() {
+		return (
+			<div className="container">
+				{this.displayUsers()}
+			</div>
+		)
+	}
 }
 
 const mapStateToProps = state => {
-    return {
-        bookUsers: state.bookUsersPageReducer.fetchedBookUsers,
-        bookUsersLoading: state.bookUsersPageReducer.fetchedBookUsersLoading,
-        bookUsersSuccess: state.bookUsersPageReducer.fetchedBookUsersSuccess,
-        bookUsersError: state.bookUsersPageReducer.fetchedBookUserssError
-        }
+	return {
+		bookUsers: state.bookUsersPageReducer.fetchedBookUsers,
+		bookUsersLoading: state.bookUsersPageReducer.fetchedBookUsersLoading,
+		bookUsersSuccess: state.bookUsersPageReducer.fetchedBookUsersSuccess,
+		bookUsersError: state.bookUsersPageReducer.fetchedBookUserssError
+	}
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-           getUsers: () => dispatch(fetchUsers()) 
-        }
+	return {
+		   getUsers: () => dispatch(fetchUsers()) 
+	}
+}
+
+BookUsersPage.propTypes = {
+	getUsers: PropTypes.func,
+	bookUsersLoading: PropTypes.bool,
+	bookUsersSuccess: PropTypes.bool,
+	bookUsers: PropTypes.array,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookUsersPage)

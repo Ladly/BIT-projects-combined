@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import connect from 'react-redux'
 
 import './style.scss'
@@ -8,47 +9,53 @@ import { Error } from './../../components/Error'
 
 class Login extends Component {
 
-    state = {
-        usernameValue: "",
-        passwordValue: ""
-    }
+	state = {
+		usernameValue: '',
+		passwordValue: ''
+	}
 
-    createBody = () => {
-        const body = {
-            username: this.state.usernameValue,
-            password: this.state.passwordValue
-        }
+	createBody = () => {
+		const body = {
+			username: this.state.usernameValue,
+			password: this.state.passwordValue
+		}
 
-        return body
-    }
+		return body
+	}
 
-    handleChange = e => {
-        if(e.target.name === 'username') {
-            this.setState({usernameValue: e.target.value})
-        } else if(e. target.name === 'password') {
-            this.setState({passwordValue: e.target.value})
-        }
-    }
+	handleChange = e => {
+		if(e.target.name === 'username') {
+			this.setState({usernameValue: e.target.value})
+		} else if(e. target.name === 'password') {
+			this.setState({passwordValue: e.target.value})
+		}
+	}
 
-    postData = () => {
-        this.props.userLogin(this.createBody())
-            .then(() => {
-                this.props.goToHomePage()
-                this.props.addSessionIdToSessionStorage()
-            
-            })
-    }
+	postData = () => {
+		this.props.userLogin(this.createBody())
+			.then(() => {
+				this.props.goToHomePage()
+				this.props.addSessionIdToSessionStorage()
+			
+			})
+	}
 
-    render() {  
-        return (
-            <div className="login-component">
-                <input onChange={this.handleChange} value={this.state.usernameValue} type="text" className="form-control" placeholder="Username" name="username" />
-                <input onChange={this.handleChange} value={this.state.passwordValue} type="password" className="form-control" placeholder="Password" name="password" />
-                <hr />
-                <button onClick={this.postData} className="btn btn-primary btn-block">Login</button>
-            </div>
-        )
-    }
+	render() {  
+		return (
+			<div className="login-component">
+				<input onChange={this.handleChange} value={this.state.usernameValue} type="text" className="form-control" placeholder="Username" name="username" />
+				<input onChange={this.handleChange} value={this.state.passwordValue} type="password" className="form-control" placeholder="Password" name="password" />
+				<hr />
+				<button onClick={this.postData} className="btn btn-primary btn-block">Login</button>
+			</div>
+		)
+	}
+}
+
+Login.propTypes = {
+	userLogin: PropTypes.func,
+	goToHomePage: PropTypes.func,
+	addSessionIdToSessionStorage: PropTypes.func
 }
 
 
