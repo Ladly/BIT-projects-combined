@@ -7,7 +7,7 @@ import './style.scss'
 export const ShowCard = (props) => {
 	const { show } = props
 	return (
-		<div className="show-card col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<div className="show-card col-xs-12 col-sm-6 col-md-6 col-lg-4">
 			<Link to={`/details/${show.id}`} >
 				<img src={show.image} alt="show poster"/>
 				<div>

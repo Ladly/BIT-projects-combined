@@ -1,14 +1,35 @@
-.jumbotron {
-    margin: 10px 0;
-    h4 {
-        text-align: center;
+@media only screen and (max-width: 575px) {
+    .jumbotron {
+        margin: 10px 0;
+        h4 {
+            text-align: center;
+            margin: 50px 0;
+        }
+        .top-shows {
+            text-align: center;
+            img {
+                display: block;
+                margin: 0 auto;
+                border-radius: 5px;
+            }
+        }
     }
-    .top-shows {
-        text-align: center;
-        img {
-            display: block;
-            margin: 0 auto;
-            border-radius: 5px;
+}
+
+@media only screen and (min-width: 576px) {
+    .jumbotron {
+        margin: 10px 0;
+        h4 {
+            text-align: center;
+            margin: 50px 0;
+        }
+        .top-shows {
+            text-align: center;
+            img {
+                display: block;
+                width: 100%;
+                border-radius: 5px;
+            }
         }
     }
 }

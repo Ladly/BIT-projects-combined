@@ -8,6 +8,7 @@ import './style.scss'
 import { fetchShows } from './actions'
 
 import { ShowCard } from './../../components/ShowCard'
+import { AsideNavigation } from './../../components/AsideNavigation'
 import { Loading } from './../../components/Loading'
 import { Error } from './../../components/Error'
 
@@ -42,20 +43,8 @@ class Homepage extends Component {
 				<div className="main">
 					<h2 className="section-title">Popular Shows</h2>
 					<section className="row">
-						<aside className="col-xs-12 col-sm-12 col-md-12 col-lg-3">
-							<ul>
-								<li>
-									<Link to="/showusers" className="">Users</Link>
-								</li>	
-								<li>
-									<Link to="/blog" className="">Blog</Link>
-								</li>
-								<li>
-									<Link to="/blogauthors" className="">Blog authors</Link>
-								</li>				
-							</ul>
-						</aside>
-						<article className="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+						<AsideNavigation />						
+						<article className="col-xs-12 col-sm-12 col-md-9 col-lg-9">
 							<div className="row">
 								{this.displayShows()}
 							</div>

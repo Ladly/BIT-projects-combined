@@ -21,7 +21,7 @@ class Header extends Component {
 		} else if (this.props.topThreeShowsSuccess) {
 			return this.props.topThreeShows.map(show => {
 				return (
-					<div className="col-xs-12 col-sm-3 col-md-4 top-shows" key={show.id}>
+					<div className="col-xs-12 col-sm-4 col-md-4 top-shows" key={show.id}>
 						<img src={show.image} alt=""/>
 						<p>{show.name}</p>
 						<p><b>Rating</b>: {show.rating}</p>
