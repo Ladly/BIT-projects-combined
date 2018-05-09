@@ -1,42 +1,62 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import SearchInput from './../../containers/SearchInput' 
 
-import { Link } from 'react-router-dom'
+import './style.scss'
 
-export const Navigation = () => {
+const Navigation = (props) => {
+
+	const displaySearchShow = () => {
+		if (props.history.location.pathname === '/homepage') {
+			return <SearchInput />
+		}
+	}
+
+	const displayLogoutButton = () => {
+		if(sessionStorage.getItem('sessionId') !== null) {
+			return <button  onClick={logout} className="btn btn-sm btn-outline-secondary" type="button">Logout</button>
+		}
+	}
+
+	const logout = () => {
+		sessionStorage.removeItem('sessionId')
+	}	
 
 	return (
-		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div className="container-fluid bg-dark">
 			<div className="container">
-				<Link to="/" className="navbar-brand">BitCombined</Link> 
-				<div id="navbarNav"> 
-					<ul className="navbar-nav">
-						<li className="nav-item">
-							<Link to="/homepage" className="nav-link">Home</Link>
-						</li>
-						<li className="nav-item">
-							<Link to="/showusers" className="nav-link">Show users</Link>
-						</li>
-						<li className="nav-item">
-							<Link to="/blog" className="nav-link">Blog</Link>
-						</li>
-						<li className="nav-item">
-							<Link to="/blogauthors" className="nav-link">Blog Authors</Link>
-						</li>
-						<li className="nav-item">
-							<Link to="/bookfeed" className="nav-link">Book Feed</Link>
-						</li>
-						<li className="nav-item">
-							<Link to="/bookprofile" className="nav-link">Book Profile</Link>
-						</li>
-						<li className="nav-item">
-							<Link to="/bookusers" className="nav-link">Book Users</Link>
-						</li>
-					</ul>
+				<div className="nav-holder">
+					<div className="header">	
+						<h2><Link to="/login">BitCombined</Link></h2>				
+						<button className="btn btn-secondary btn-sm">Logout</button>
+					</div>	
+					<nav>
+						<ul>
+							<li>
+								<Link to="/homepage" className="">Home</Link>
+							</li>	
+							<li>
+								<Link to="/bookfeed" className="">Book Feed</Link>
+							</li>
+							<li>
+								<Link to="/bookprofile" className="">Book Profile</Link>
+							</li>
+							<li>
+								<Link to="/bookusers" className="">Book Users</Link>
+							</li>				
+						</ul> 
+					</nav>
 				</div>
-				<SearchInput />
 			</div>
-		</nav>
+		</div>	
 	)
 }
+
+Navigation.propTypes = {
+	history: PropTypes.object
+}
+
+export default withRouter(Navigation)
