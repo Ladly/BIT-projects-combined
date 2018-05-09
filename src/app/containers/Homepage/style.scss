@@ -1,11 +1,34 @@
-.page-title {
-    margin: 20px 0
+@media only screen and (max-width: 575px) {
+    .main {
+        margin-bottom: 50px;
+        h2 {
+            text-align: center;
+            margin: 2em 0 1em;
+        }
+    }
 }
 
-.card {
-    margin: 10px 0
+@media only screen and (min-width: 576px) { 
+    .main {
+    margin-bottom: 50px;
+        h2 {
+            text-align: center;
+            margin: 2em 0 1em;
+        }
+    }
 }
 
-.card:nth-last-child(1) {
-    margin-bottom: 40px
-} 
+@media only screen and (min-width: 768px) {         
+    .main {
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (min-width: 769px) {         
+    .main {
+        margin-bottom: 50px;
+        h2 {
+            text-align: center;           
+        }
+    }
+}

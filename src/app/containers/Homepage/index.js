@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import './style.scss'
 
@@ -23,7 +24,10 @@ class Homepage extends Component {
 			return <Loading />
 		} else if (this.props.fetchShowsSuccess) {
 			return this.props.shows.map(show => {
-				return <ShowCard show={show} key={show.id}/>
+				return <ShowCard 
+					show={show} 
+					key={show.id} 
+				/>
 			})
 		} else if (this.props.fetchedShowsError) {
 		   return <Error />
@@ -33,11 +37,30 @@ class Homepage extends Component {
 
 	render() {
 		return (
-			<div className="container main">
+			<div className="container show-page">
 				<Header />
-				<h1 className="page-title text-center">Popular Shows</h1>
-				<div className="row">
-					{this.displayShows()}
+				<div className="main">
+					<h2 className="section-title">Popular Shows</h2>
+					<section className="row">
+						<aside className="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+							<ul>
+								<li>
+									<Link to="/showusers" className="">Users</Link>
+								</li>	
+								<li>
+									<Link to="/blog" className="">Blog</Link>
+								</li>
+								<li>
+									<Link to="/blogauthors" className="">Blog authors</Link>
+								</li>				
+							</ul>
+						</aside>
+						<article className="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+							<div className="row">
+								{this.displayShows()}
+							</div>
+						</article>
+					</section>
 				</div>
 			</div>
 		)

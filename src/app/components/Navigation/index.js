@@ -31,21 +31,21 @@ const Navigation = (props) => {
 				<div className="nav-holder">
 					<div className="header">	
 						<h2><Link to="/login">BitCombined</Link></h2>				
-						<button className="btn btn-secondary btn-sm">Logout</button>
+						{displayLogoutButton()}
 					</div>	
 					<nav>
 						<ul>
 							<li>
-								<Link to="/homepage" className="">Home</Link>
+								<Link to="/homepage">Home</Link>
 							</li>	
 							<li>
-								<Link to="/bookfeed" className="">Book Feed</Link>
+								<Link to="/bookfeed">Book Feed</Link>
 							</li>
 							<li>
-								<Link to="/bookprofile" className="">Book Profile</Link>
+								<Link to="/bookprofile">Book Profile</Link>
 							</li>
 							<li>
-								<Link to="/bookusers" className="">Book Users</Link>
+								<Link to="/bookusers">Book Users</Link>
 							</li>				
 						</ul> 
 					</nav>

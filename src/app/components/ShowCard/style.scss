@@ -1,0 +1,38 @@
+@media only screen and (max-width: 575px) {
+    .show-card {
+        padding: 30px;
+        margin: 10px auto;
+        width: 80%;
+        -webkit-box-shadow: -8px 1px 100px 30px rgba(0,0,0,0.4);
+        -moz-box-shadow: -8px 1px 100px 30px rgba(0,0,0,0.4);
+        box-shadow: -8px 1px 100px 30px rgba(0,0,0,0.4);
+        img {
+            border-radius: 10px;
+            display: block;
+            margin: 10px auto;
+        }        
+    }    
+}
+
+@media only screen and (min-width: 576px) { 
+    .show-card {
+        padding: 10px 30px;
+        margin: 10px 0;
+        img {
+            border-radius: 10px;
+            margin: 10px auto;
+        }
+    }
+}
+
+
+@media only screen and (min-width: 768px) { 
+    .show-card {
+        padding: 0 0 10px;
+        img {
+            display: block;
+        }
+    }
+
+    
+}

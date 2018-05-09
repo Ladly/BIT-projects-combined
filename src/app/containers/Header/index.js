@@ -21,23 +21,24 @@ class Header extends Component {
 		} else if (this.props.topThreeShowsSuccess) {
 			return this.props.topThreeShows.map(show => {
 				return (
-					<div className="col-sm-3" key={show.id}>
+					<div className="col-xs-12 col-sm-3 col-md-4 top-shows" key={show.id}>
 						<img src={show.image} alt=""/>
 						<p>{show.name}</p>
 						<p><b>Rating</b>: {show.rating}</p>
 					</div>
 				)
-			}) 
-			
-		} else (this.props.topThreeShowsError)
-		return <Error />
+			}) 			
+		} else {
+			return <Error />
+		}
 	}
 
 	render() {
 		return (
 			<div className="jumbotron">
 				<h1 className="display-4 text-center">Bit Show</h1>
-				<div className="row">
+				<h4>Top rating</h4>
+				<div className="row top-shows-holder">
 					{this.displayTopThreeShows()}
 				</div>
 			</div>
