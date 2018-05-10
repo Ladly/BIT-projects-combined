@@ -12,7 +12,10 @@ export const TextPostCard = ({post}) => {
 				<div className="card-body text-dark">
 					<h5 className="card-title text-center">{post.text}</h5>
 					<hr />
-					<p className="card-text"><span>{post.type}</span><span className="float-right">{post.commentsNum}</span></p>
+					<p className="card-text">
+						<span>{post.type}
+						</span><span className="float-right">{post.commentsNum}</span>
+					</p>
 				</div>
 			</div>
 		</Link>

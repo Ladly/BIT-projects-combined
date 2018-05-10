@@ -97,22 +97,36 @@ class BookFeedPage extends Component {
 
 	render() {
 		return (
-			<div className="container">
-				<div className="row feed-controls">
-					<button onClick={this.displayTxtModal} className="btn btn-primary col-sm-3">Add text post</button>
-					<button onClick={this.displayImgModal} className="btn btn-primary col-sm-3">Add image post</button>
-					<button onClick={this.displayVidModal} className="btn btn-primary col-sm-3">Add video post</button>
-					<select className="form-control col-sm-3" onChange={this.handleTypeChange}>
-						<option>All</option>
-						<option>Text</option>
-						<option>Image</option>
-						<option>Video</option>
-					</select>
-				</div>
+			<div className="container book-feed-container">
 				<TextPostModal display={this.props.textModal} hideModal={this.props.hideTextModal} getBookPosts={this.props.getBookPosts}/>
 				<ImagePostModal display={this.props.imageModal} hideModal={this.props.hideImageModal} getBookPosts={this.props.getBookPosts}/>
 				<VideoPostModal display={this.props.videoModal} hideModal={this.props.hideVideoModal} getBookPosts={this.props.getBookPosts}/>
-				{this.displayPosts()}
+				<div className="row">
+					<div className="feed-controls col-xs-12 col-sm-12 col-md-3">
+						<p>Actions</p>
+						<div onClick={this.displayTxtModal} className="feed-control">
+							<div className="my-badge">T</div><span>Add text post</span>
+						</div>
+						<div onClick={this.displayImgModal} className="feed-control">
+							<div className="my-badge">I</div><span>Add image post</span>
+						</div>
+						<div onClick={this.displayVidModal} className="feed-control">
+							<div className="my-badge">V</div><span>Add video post</span>
+						</div>
+						<div className="feed-control">
+							<select className="form-control" onChange={this.handleTypeChange}>
+								<option>All</option>
+								<option>Text</option>
+								<option>Image</option>
+								<option>Video</option>
+							</select>
+						</div>
+
+					</div>
+					<div className="col-xs-12 col-sm-12 col-md-9">
+						{this.displayPosts()}
+					</div>
+				</div>
 			</div>
 		)
 	}
