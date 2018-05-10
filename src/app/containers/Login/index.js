@@ -43,10 +43,22 @@ class Login extends Component {
 	render() {  
 		return (
 			<div className="login-component">
-				<input onChange={this.handleChange} value={this.state.usernameValue} type="text" className="form-control" placeholder="Username" name="username" />
-				<input onChange={this.handleChange} value={this.state.passwordValue} type="password" className="form-control" placeholder="Password" name="password" />
+				<input 
+					onChange={this.handleChange} 
+					value={this.state.usernameValue} 
+					type="text" className="form-control" 
+					placeholder="Username" 
+					name="username" 
+				/>
+				<input 
+					onChange={this.handleChange} 
+					value={this.state.passwordValue} 
+					type="password" className="form-control" 
+					placeholder="Password" 
+					name="password" 
+				/>
 				<hr />
-				<button onClick={this.postData} className="btn btn-primary btn-block">Login</button>
+				<button onClick={this.postData} className="btn btn-primary btn-block float-right">Login</button>
 			</div>
 		)
 	}

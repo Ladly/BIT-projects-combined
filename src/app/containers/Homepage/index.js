@@ -43,7 +43,9 @@ class Homepage extends Component {
 				<div className="main">
 					<h2 className="section-title">Popular Shows</h2>
 					<section className="row">
-						<AsideNavigation />						
+						<div className="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+							<AsideNavigation />						
+						</div>
 						<article className="col-xs-12 col-sm-12 col-md-9 col-lg-9">
 							<div className="row">
 								{this.displayShows()}

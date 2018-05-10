@@ -41,19 +41,46 @@ class LoginPage extends Component {
 	render() {  
 		return (
 			<div className="register-component">
-				<input onChange={this.handleChange} value={this.state.usernameValue} type="text" className="form-control" placeholder="Username" name="username" />
-				<input onChange={this.handleChange} value={this.state.passwordValue} type="password" className="form-control" placeholder="Password" name="password"/>
-				<input onChange={this.handleChange} value={this.state.nameValue} type="text" className="form-control" placeholder="Name" name="name"/>
-				<input onChange={this.handleChange} value={this.state.emailValue} type="email" className="form-control" placeholder="E-mail" name="email"/>
+				<input 
+					onChange={this.handleChange} 
+					value={this.state.usernameValue} 
+					type="text" 
+					className="form-control" 
+					placeholder="Username" 
+					name="username" />
+				<input 
+					onChange={this.handleChange} 
+					value={this.state.passwordValue} 
+					type="password" 
+					className="form-control" 
+					placeholder="Password"
+					name="password"/>
+				<input 
+					onChange={this.handleChange} 
+					value={this.state.nameValue} 
+					type="text" 
+					className="form-control" 
+					placeholder="Name" 
+					name="name"/>
+				<input 
+					onChange={this.handleChange} 
+					value={this.state.emailValue} 
+					type="email" 
+					className="form-control" 
+					placeholder="E-mail"
+					name="email"/>
 				<hr />
-				<button onClick={() => this.props.registerUser(this.createBody())} className="btn btn-primary btn-block">Register</button>
+				<button 
+					onClick={() => this.props.registerUser(this.createBody())} 
+					className="btn btn-primary btn-block float-right"
+				>Register</button>
 			</div>
 		)
 	}
 }
 
 LoginPage.propTypes = {
-	registerUser: PropTypes.function
+	registerUser: PropTypes.func
 }
 
 export default LoginPage

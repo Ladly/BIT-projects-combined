@@ -14,6 +14,7 @@ import './style.scss'
 
 import { Loading } from './../../components/Loading'
 import { Error } from './../../components/Error'
+import { AsideNavigation } from './../../components/AsideNavigation'
 import Login from './../Login'
 import Register from './../Register'
 
@@ -50,20 +51,37 @@ class LoginPage extends Component {
 
 	render() { 
 		return (
-			<div className="container">
-				<div className="login-holder col-sm-8 offset-sm-1">
-					<nav className="login-nav">
-						<ul className="nav nav-tabs">
-							<li className="nav-item">
-								<div onClick={this.props.displayLoginAction} className={this.activeLoginNavClass()}><h4>Login</h4></div>
-							</li>
-							<li className="nav-item">
-								<div onClick={this.props.displayRegisterAction} className={this.activeRegisterNavClass()}><h4>Register</h4></div>
-							</li>
-						</ul>
-					</nav>
-
-					 {this.pickComponentToRender()}
+			<div className="container login-container">
+				<div className="login-holder row">
+					<section className="col-xs-12 col-sm-12 col-md-6">
+						<h1>About</h1>
+						<div className="about-text">
+							<p>Few paragraphs about app
+							few paragraphs about app
+							few paragraphs about app
+							few paragraphs about app
+							few paragraphs about app
+							few paragraphs about app</p>
+						</div>
+					</section>
+					<section className="col-xs-12 col-sm-12 col-md-6">
+						<nav className="login-nav">
+							<ul className="nav nav-tabs">
+								<li className="nav-item">
+									<div onClick={this.props.displayLoginAction} className={this.activeLoginNavClass()}><h4>Login</h4></div>
+								</li>
+								<li className="nav-item">
+									<div onClick={this.props.displayRegisterAction} className={this.activeRegisterNavClass()}><h4>Register</h4></div>
+								</li>
+							</ul>
+						</nav>
+						{this.pickComponentToRender()}
+					</section>
+				</div>
+				<div className="row">
+					<section className="login-aside-nav col-md-4 offset-md-4">
+						<AsideNavigation />
+					</section>
 				</div>
 			</div>
 		)
