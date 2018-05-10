@@ -12,7 +12,7 @@ export const ShowAKA = (props) => {
 	}
 
 	return (
-		<h5 className="text-center">Aka: {displayAKA()}</h5>
+		<h5>Aka: {displayAKA()}</h5>
 	)
 }
 

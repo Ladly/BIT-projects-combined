@@ -1,12 +1,37 @@
-button {
-    margin: 10px 0 20px;
+@media only screen and (max-width: 575px) {
+    .episodes-holder {
+        ul {
+            padding: 10px;
+            margin-bottom: 50px;
+            li {
+                margin-top: 10px;
+            }
+        }
+        h4 {
+            padding-left: 10px;
+        }
+        h3 {
+            margin: 20px;
+            text-align: center;
+        }
+    }
 }
 
-.crew-list {
-    padding: 0;
-    margin-bottom: 50px;
-}
-
-.details-page-container {
-    margin-top: 60px;
+@media only screen and (min-width: 576px) {
+    .episodes-holder {
+        ul {
+            padding: 10px;
+            margin-bottom: 50px;
+            li {
+                margin-top: 10px;
+            }
+        }
+        h4 {
+            padding-left: 10px;
+        }
+        h3 {
+            text-align: center;
+            margin: 20px;
+        }
+    }
 }

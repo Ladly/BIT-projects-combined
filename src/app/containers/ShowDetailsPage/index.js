@@ -38,10 +38,10 @@ class ShowDetailsPage extends Component {
 			return <Loading />
 		} else if(this.props.showCrewSuccess) {
 			return this.props.showCrew.map((member, i) => {
-				if(i > 3) {
+				if(i > 7) {
 					return false
 				}
-				return <li key={i} className="crew-list-item"><b>{member.type}</b>: {member.name} </li>
+				return <li key={i} className="list-group-item"><b>{member.type}</b>: {member.name} </li>
 			})
 		} else if (this.props.showCrewError) {
 			return <Error />
@@ -54,8 +54,8 @@ class ShowDetailsPage extends Component {
 		} else if(this.props.seasonEpisodesSuccess) {
 			return this.props.seasonEpisodes.map(episode => {
 				return (
-					<li key={episode.id} className="episode-list-item">
-						<h4 className="text-center">Name: {episode.name}, Episode number {episode.number}, Season: {episode.season}</h4>
+					<li key={episode.id} className="list-group-item">
+						<h4><span>{episode.name} (S{episode.number}E{episode.season})</span></h4>
 						<hr />
 						<p> <b>Plot:</b> {episode.summary}</p> 
 					</li>
@@ -68,11 +68,14 @@ class ShowDetailsPage extends Component {
 
 	render() {  
 		return (
-			<div className="container details-page-container">
+			<div className="container">
 				{this.displayDetails()} 
-				<Link className="btn btn-primary" to={`/comments/${this.props.match.params.id}`}>Comment</Link>
-				<div>  
-					{this.displayEpisodes()}
+				{/* <Link className="btn btn-primary" to={`/comments/${this.props.match.params.id}`}>Comment</Link> */}
+				<div className="episodes-holder"> 
+					<h3>Episodes</h3>
+					<ul className="list-group-flush"> 
+						{this.displayEpisodes()}
+					</ul> 
 				</div>
 			</div>
 		)

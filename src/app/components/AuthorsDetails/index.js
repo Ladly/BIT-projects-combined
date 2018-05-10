@@ -11,7 +11,7 @@ export const AuthorsDetails = ({author}) => {
 				<p>Username: <span className="authors-details-accented">{author.username}</span></p>
 				<p>Email: <span className="authors-details-accented">{author.email}</span></p>
 				<p>Phone: <span className="authors-details-accented">{author.phone}</span></p>
-			</div>    
+			</div>
 		</div>
 	)
 }

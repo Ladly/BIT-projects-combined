@@ -1,15 +1,93 @@
-.show-poster {
-    width: 100%;
+@media only screen and (max-width: 575px) {
+    .single-show {
+        button {
+            margin: 10px;
+        }
+        h3 {
+            text-align: center;
+        }
+        ul {
+            padding: 10px;
+        }
+
+        .single-show-jumbotron {
+            h1, h5 {
+                text-align: center;
+            }
+        }
+        .show-details-content {
+            button {
+                width: 30%;
+                display: block;
+                margin: 15px auto;
+            }
+            p {
+                margin: 20px;
+                text-indent: 30px;
+            }
+            .image-holder {
+                margin: 20px;
+                img {
+                    width: 80%;
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+            .cast-holder {
+                h5 {
+                    text-align: center;
+                }
+            }
+       
+        }
+    }
 }
 
-li {
-    list-style-type: none;
+@media only screen and (min-width: 576px) {
+    .single-show {
+        ul {
+            padding: 10px;
+            width: 100%;
+        }
+        h3 {
+            text-align: center;
+        }
+
+        .single-show-jumbotron {
+            h1, h5 {
+                text-align: center;
+            }
+        }
+        .show-details-content {
+            button {
+                width: 30%;
+                display: block;
+                margin: 15px auto;
+            }
+            p {
+                margin: 20px;
+                text-indent: 30px;
+            }
+            .image-holder {
+                img {
+                    width: 80%;
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+            .cast-holder {
+                h5 {
+                    text-align: center;
+                    margin: 15px;
+                }           
+            }           
+          
+        }
+    }
 }
 
-.cast-list {
-    padding: 0;
-}
-
-.show-details-content {
-   margin-top: 50px;
+@media only screen and (min-width: 768px) {
+    .image-holder {
+        margin: 50px 0;
+    }
 }
