@@ -1,6 +1,6 @@
-# Bit show react redux
+# Bit combined react redux
 
-Bit-show project from belgrade instite of technology done using react and react redux
+Combination of all projects from Belgrade instite of technology done using react and react redux
 
 For bootstraping i will use my https://github.com/Ladly/async-react-redux-with-routing boilerplate 
 
@@ -20,6 +20,16 @@ I also need to redesign whole app because this is more well just add bunch of pa
 The idea of styling each component separately is great until you need to change something so that will be changed too
 
 Trello: https://trello.com/b/sG6VV1hO
+
+API-s used in this project: 
+
+- shows: http://api.tvmaze.com
+
+- users: https://randomuser.me/api/?results=15
+
+- blog: https://jsonplaceholder.typicode.com/
+
+- book: http://bitbookapi.azurewebsites.net/swagger/ui/index#/
 
 Note: this is not suitable for deploy. Even though production mode is setted in webpack it is not minified and optimised for production 
 
