@@ -1,0 +1,22 @@
+@media only screen and (max-width: 575px) {
+    .show-users-container {
+        margin-bottom: 70px;
+        .show-users-controls {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 10px;
+        }
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .show-users-container {
+        margin-bottom: 70px;
+        .show-users-controls {
+            margin: 10px 0;
+            button {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
