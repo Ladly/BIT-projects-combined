@@ -90,17 +90,17 @@ class ShowUsersPage extends Component {
 
 	render() {
 		return (
-			<div className="container">
+			<div className="container show-users-container">
 				<div className="row">
-					<div className="col-sm-6">
+					<div className="show-users-controls col-xs-12 col-sm-12 col-md-2">
 						<button onClick={this.saveAndChangeView} className="btn btn-primary">{this.pickButtonDisplay()}</button>
-					</div>
-					<div className="col-sm-6">
 						<button onClick={this.getAndStoreUsers} className="btn btn-primary">Refresh users</button>
 					</div>
-				</div>
-				<div className="row">
-					{this.pickView()}
+					<div className="col-xs-12 col-sm-12 col-md-10">
+						<div className="row">
+							{this.pickView()}
+						</div>
+					</div>
 				</div>
 			</div>
 		)
