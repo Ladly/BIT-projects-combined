@@ -1,5 +1,95 @@
-.profile-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media only screen and (max-width: 575px) {
+    .profile-holder {
+        margin: 50px 0;
+        width: 100%;
+        img {
+            width: 60%;
+            display: block;
+            margin: 10px auto;
+            border: 1px solid grey;
+            border-radius: 50%;
+        }
+        .profile-details {
+            text-align: center;
+        }
+        .profile-holder-footer {
+            display: flex;
+            justify-content: space-evenly;
+            .pc {
+                display: flex;
+                justify-content: space-between;
+                width: 10%;
+                .pc-circle {
+                    width: 25px;
+                    height:25px;
+                    background: navy;
+                    color: white;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .profile-holder {
+        margin: 50px 0;
+        width: 100%;
+        img {
+            width: 60%;
+            display: block;
+            margin: 10px auto;
+            border: 1px solid grey;
+            border-radius: 50%;
+        }
+        .profile-details {
+            text-align: center;
+        }
+        .profile-holder-footer {
+            display: flex;
+            justify-content: space-evenly;
+            .pc {
+                display: flex;
+                justify-content: space-between;
+                width: 10%;
+                .pc-circle {
+                    width: 25px;
+                    height:25px;
+                    background: navy;
+                    color: white;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .profile-holder {
+        img {
+            width: 40%;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .profile-holder {
+        img {
+            width: 30%;
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .profile-holder {
+        img {
+            width: 20%;
+        }
+    }
 }

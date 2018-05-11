@@ -32,7 +32,7 @@ class BookProfilePage extends Component {
 		} else if (this.props.profileSuccess) {
 			return (
 				<Fragment>
-					<div className="profile-main">
+					<div className="profile-holder">
 						<BookUserProfile profile={this.props.profile} displayModal={this.displayUpdateModal}/>
 					</div>
 					<BookProfileUpdateModal 
@@ -50,7 +50,7 @@ class BookProfilePage extends Component {
 
 	render() {
 		return (
-			<div className="container">
+			<div className="container profile-container">
 				{this.displayProfile()}
 			</div>
 		)
