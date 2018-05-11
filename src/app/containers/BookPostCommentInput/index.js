@@ -48,10 +48,12 @@ class BookPostCommentInput extends Component {
 
 	render() {
 		return (
-			<div className="input-holder">
-				<input type="text" className="form-control" placeholder="Add comment" onChange={this.handleChange} value={this.state.value}/>
-				<button disabled={this.disableButton()} onClick={this.postData} className="btn btn-primary btn-block">Post comment</button>
-				{this.displayNotation()}
+			<div className="row">
+				<div className="col-xs-12 col-sm-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 book-comment-input">
+					<input type="text" className="form-control" placeholder="Add comment" onChange={this.handleChange} value={this.state.value}/>
+					<button disabled={this.disableButton()} onClick={this.postData} className="btn btn-primary float-right">Post comment</button>
+					{this.displayNotation()}
+				</div>
 			</div>
 		)
 	}

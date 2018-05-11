@@ -93,7 +93,7 @@ class BookPostDetails extends Component {
 
 	render() {
 		return (
-			<div className="container">
+			<div className="container book-post-details-container">
 				{this.pickDisplayCard()}
 				<BookPostCommentInput postId={this.props.match.params.id} />
 				<BookPostComments postId={this.props.match.params.id}/>
