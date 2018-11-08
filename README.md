@@ -22,9 +22,9 @@ API-s used in this project:
 
 - [Shows](http://api.tvmaze.com)
 
-- [Users](https://randomuser.me/api/?results=15
+- [Users](https://randomuser.me/api/?results=15)
 
-- [blog](https://jsonplaceholder.typicode.com/
+- [blog](https://jsonplaceholder.typicode.com/)
 
 - [book](http://bitbookapi.azurewebsites.net/swagger/ui/index#/)  No longer available
 
